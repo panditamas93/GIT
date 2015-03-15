@@ -20,14 +20,16 @@ session_start();
 				}
 
 		
-			$sql="SELECT * FROM Benutzer WHERE BenutzerName='$BenutzerName' and Passwort='$Passwort'";
-			$result=mysql_query($sql);
-			$count=mysql_num_rows($result);
+			$sql="SELECT * FROM Benutzer WHERE BenutzerName='$BenutzerName' and Passwort='$md5hash'";
+			$result=mysqli_query($mysqli,$sql);
+			$count=mysqli_num_rows($result);
+			echo $count;
+			
 		
 		
        if($count==1)
 		{
-			$_SESSION['BenutzerName']=$BenutzerName;
+			$_SESSION['myusername']=$BenutzerName;
 			header('Location:login_success.php');
 		}
 		else 
