@@ -14,37 +14,65 @@
 
 
 <?php
-$CSV = $_POST['CSV'];
-$rows=explode("\n",$CSV);
-$numberofrows=count($rows);
+	$CSV = $_POST['CSV'];
+	
+	
+//MULTIDIMENSIONAL ARRAY/GET NUMBER OF ROWS
+
+$array = array();
+$array = explode("\n", $CSV);
+$numberofrows=count($array);
+echo $numberofrows;
+foreach($array as $key => $CSV)
+{
+	$array[$key] = explode(",", $CSV);
+	
+	
+}
+//echo "<pre>";
+//print_r($array);
+
+$numberofitems = array_sum(array_map("count", $array));
+$numberofitems = $numberofitems/$numberofrows;
+echo $numberofitems;
 
 
 
 
+/*$count = 0;
+foreach ($array as $type) {
+    $count+= count($type);
+}
+echo $count;*/
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-//$data = str_getcsv($CSV);
-//$data2 = explode(",", $data)
-
-//$darabok= explode(",",$CSV);
-/*for($i =0; $i<7; $i++){
-	echo "Darab $i=$darabok[$i] <br/>";
-}*/
-// insert record
-//$sql="INSERT INTO posts (postTitle, postDescription) VALUES ('$_POST[formPostTitle]','$varFormPostDescription')";
+	
+//GET NUMBER OF ITEMS IN ROW
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/*$items=explode("\n",$CSV);
+	$numberofrows=count($items);
+	echo $numberofrows;
+	$rowsanditems = array();
+	
+	$coin=0;
+	foreach ($items as $item){
+		$exploded = explode(",",$item);
+		$rowsanditems[$exploded[0]] = $exploded[1];
+		$coin++;
+	}
+		//$numberofitems = count($rowsanditems);
+		echo $coin;*/
 ?>
 <form method="post">
 Field:</br> <textarea name="CSV"></textarea>
