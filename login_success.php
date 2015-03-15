@@ -5,27 +5,51 @@
 	
 	?>
 <html>
- <body background="GranTurismo5CorvetteStingray.jpg" bgproperties="fixed" bgcolor="blue">	
+ <body bgproperties="fixed" bgcolor="blue">	
  <h1> WELCOME</h1>
  <?php 
 	
 	echo "Hi: ".$_SESSION['myusername']."</br>";
- 
- 
  ?>
-<form method="POST"> 
-	Nachricht: <input type="text" name="Nachricht" /> <br /> 
-    <input type="submit"/> 
-	</form>
- <?php
- 
-    	$_SESSION['Nachricht']=$_POST['Nachricht'];
-?>
-	<hr/>
-<?php
-echo($_SESSION['Nachricht']);
-?>
 
+
+<?php
+$CSV = $_POST['CSV'];
+$rows=explode("\n",$CSV);
+$numberofrows=count($rows);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//$data = str_getcsv($CSV);
+//$data2 = explode(",", $data)
+
+//$darabok= explode(",",$CSV);
+/*for($i =0; $i<7; $i++){
+	echo "Darab $i=$darabok[$i] <br/>";
+}*/
+// insert record
+//$sql="INSERT INTO posts (postTitle, postDescription) VALUES ('$_POST[formPostTitle]','$varFormPostDescription')";
+?>
+<form method="post">
+Field:</br> <textarea name="CSV"></textarea>
+<input type="submit">
+</form>
  <A href="http://localhost/session_kill.php">Logout</A>
  </body>
  </html>
