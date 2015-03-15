@@ -8,42 +8,37 @@ session_start();
 		<h1> Log in</h1>
 <?php 
 
-    if( isset( $_POST[ 'myusername' ] ) ) { 
-        $myusername = $_POST[ 'myusername' ]; 
-        $mypassword= $_POST[ 'mypassword' ]; 
-		$mypassword = md5($mypassword);
+    if( isset( $_POST[ 'BenutzerName' ] ) ) { 
+        $BenutzerName = $_POST[ 'BenutzerName' ]; 
+        $Passwort= $_POST[ 'Passwort' ]; 
+		$md5hash = md5($Passwort);
 		
-		mysql_connect("localhost", "root", "")or die("cannot connect"); 
-		mysql_select_db("test")or die("cannot select DB");
+		$mysqli = new mysqli("localhost","root","","finanzen");
+				if($mysqli->connect_errno)
+				{
+					echo "MySQL Fehler: " . $mysqli->connect_error . "<BR/>";
+				}
 
-	
-        // To protect MySQL injection (more detail about MySQL injection)
-			$myusername = stripslashes($myusername);
-			$mypassword = stripslashes($mypassword);
-			$myusername = mysql_real_escape_string($myusername);
-			$mypassword = mysql_real_escape_string($mypassword);
-
- 
- 
-	
-			$sql="SELECT * FROM Benutzer WHERE BenutzerName='$myusername' and Passwort='$mypassword'";
+		
+			$sql="SELECT * FROM Benutzer WHERE BenutzerName='$BenutzerName' and Passwort='$Passwort'";
 			$result=mysql_query($sql);
 			$count=mysql_num_rows($result);
-
-		if($count==1)
+		
+		
+       if($count==1)
 		{
-			$_SESSION['myusername']=$myusername;
+			$_SESSION['BenutzerName']=$BenutzerName;
 			header('Location:login_success.php');
 		}
 		else 
 		{
-			echo "Wrong Username or Password";
+			echo "<p align='center'> <font color=red  size='4pt'>WRONG USERNAME OR PASSWORD</font> </p>";
 		}
 	} 
 ?>
         <form method="POST"> 
-            Benutzerame: <input type="text" name="myusername" /> <br /> 
-            Passwort: <input type="password" name="mypassword" /> <br /> 
+            Benutzerame: <input type="text" name="BenutzerName" /> <br /> 
+            Passwort: <input type="password" name="Passwort" /> <br /> 
             <input type="submit"/> 
         </form>
 		
