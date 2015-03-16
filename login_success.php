@@ -23,12 +23,25 @@ $array = array();
 $array = explode("\n", $CSV);
 $numberofrows=count($array);
 //echo $numberofrows;
+	$mysqli = new mysqli("localhost","root","","finanzen");
+				if($mysqli->connect_errno)
+				{
+					echo "MySQL Fehler: " . $mysqli->connect_error . "<BR/>";
+				}
 foreach($array as $key => $CSV)
 {
-	$array[$key] = explode(",", $CSV);
+	$currentrowarray = explode(",", $CSV);
+	$query= sprintf("INSERT INTO transaktionen (TransaktionsDatum, BenutzerName, BenutzerKonto, KontoName, KontoNummer,
+    TransaktionsTyp, TransaktionsSumme, TransaktionsDevisen, TransaktionsUSumme, TransaktionsUDevisen, EinnameoderAusgabe,
+	KartenNummer, Wertstellung, Mitteilung, Daten, KontoStand, DevisenTyp)  VALUES( %s, %s, %s, %s, %s, %s, %s, %s, %s, 
+	%s, %s, %s, %s, %s, %s, %s, %s,)",$currentrowarray[1], $currentrowarray[2],$currentrowarray[3],$currentrowarray[4],$currentrowarray[5],
+	$currentrowarray[6],$currentrowarray[7],$currentrowarray[8],$currentrowarray[9],$currentrowarray[10],$currentrowarray[11],
+	$currentrowarray[12],$currentrowarray[13],$currentrowarray[14],$currentrowarray[15],$currentrowarray[16],$currentrowarray[17]); 
 	
 }
-echo "<pre>";
+
+
+/*echo "<pre>";
 print_r($array);
 
 $numberofitems = array_sum(array_map("count", $array));
@@ -37,11 +50,7 @@ $numberofitems = $numberofitems/$numberofrows;
 
 //PUT IN DATABASE
 
-	$mysqli = new mysqli("localhost","root","","finanzen");
-				if($mysqli->connect_errno)
-				{
-					echo "MySQL Fehler: " . $mysqli->connect_error . "<BR/>";
-				}
+
 for($i=1; $i<$numberofrows+1; $i++){
 	for($j=0; $j<$numberofitems; $j++){
 		if(!isset($array[$i][$j])){
@@ -104,7 +113,7 @@ echo $count;*/
 		$coin++;
 	}
 		//$numberofitems = count($rowsanditems);
-		echo $coin;*/
+		echo $coin;*/*/
 ?>
 <form method="post">
 Field:</br> <textarea name="CSV"></textarea>
