@@ -40,6 +40,10 @@ foreach($array as $key => $CSV)
 	
 }
 
+$mysqli->query($query); 
+$mysqli->close(); 
+
+
 
 /*echo "<pre>";
 print_r($array);
