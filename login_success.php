@@ -14,6 +14,7 @@
 
 
 <?php
+	if( isset( $_POST[ 'CSV' ] ) ) {
 	$CSV = $_POST['CSV'];
 	
 	
@@ -30,15 +31,28 @@ $numberofrows=count($array);
 				}
 foreach($array as $key => $CSV)
 {
-	$currentrowarray =array_pad( explode(",",$CSV ), 17,null );
+	$currentrowarray =explode(",",$CSV );
+	foreach($currentrowarray as $keyci){
+		if(!isset($currentrowarray[$keyci])){$currentrowarray[$keyci]="NULLABAKKER";}
+		
+	}
+	
 	$query= sprintf("INSERT INTO transaktionen (TransaktionsDatum, BenutzerName, BenutzerKonto, KontoName, KontoNummer,
     TransaktionsTyp, TransaktionsSumme, TransaktionsDevisen, TransaktionsUSumme, TransaktionsUDevisen, EinnameoderAusgabe,
-	KartenNummer, Wertstellung, Mitteilung, Daten, KontoStand, DevisenTyp)  VALUES( %s, %s, %s, %s, %s, %s, %s, %s, %s, 
-	%s, %s, %s, %s, %s, %s, %s, %s,)",$currentrowarray[0], $currentrowarray[$key],$currentrowarray[2],$currentrowarray[3],$currentrowarray[4],
+	KartenNummer, Wertstellung, Mitteilung, Daten, KontoStand, DevisenTyp)  VALUES( '%s','%s','%s','%s','%s','%s','%s','%s','%s','%s'
+	,'%s','%s','%s','%s','%s','%s','%s')",$currentrowarray[0], $currentrowarray[1],$currentrowarray[2],$currentrowarray[3],$currentrowarray[4],
 	$currentrowarray[5],$currentrowarray[6],$currentrowarray[7],$currentrowarray[8],$currentrowarray[9],$currentrowarray[10],
 	$currentrowarray[11],$currentrowarray[12],$currentrowarray[13],$currentrowarray[14],$currentrowarray[15],$currentrowarray[16]); 
 	
 }
+
+
+
+/*query=sprintf("INSERT INTO transaktionen (TransaktionsDatum, BenutzerName, BenutzerKonto, KontoName, KontoNummer,
+    TransaktionsTyp, TransaktionsSumme, TransaktionsDevisen, TransaktionsUSumme, TransaktionsUDevisen, EinnameoderAusgabe,
+	KartenNummer, Wertstellung, Mitteilung, Daten, KontoStand, DevisenTyp)  VALUES( '%s','%s','%s','%s','%s','%s','%s','%s',
+	'%s','%s','%s','%s','%s','%s','%s','%s','%s')","null","null","null","null","null","null","null","null","null","null","null","null",
+	"null","null","null","null","null");*/
 
 $mysqli->query($query); 
 $mysqli->close(); 
@@ -124,7 +138,7 @@ $mysqli->real_query("SELECT KundenNr,KundenName,LieferAddresse FROM Kunde");
 		$i++;
 	}		
 		*/
-		
+	}	
 ?>
 <form method="post">
 Field:</br> <textarea name="CSV"></textarea>
