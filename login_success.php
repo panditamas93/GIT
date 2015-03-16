@@ -5,7 +5,7 @@
 	
 	?>
 <html>
- <body bgproperties="fixed" bgcolor="blue">	
+ <body bgproperties="fixed" bgcolor="pink">	
  <h1> WELCOME</h1>
  <?php 
 	
@@ -29,8 +29,8 @@ foreach($array as $key => $CSV)
 	
 	
 }
-//echo "<pre>";
-//print_r($array);
+echo "<pre>";
+print_r($array);
 
 $numberofitems = array_sum(array_map("count", $array));
 $numberofitems = $numberofitems/$numberofrows;
