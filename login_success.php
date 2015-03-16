@@ -30,13 +30,13 @@ $numberofrows=count($array);
 				}
 foreach($array as $key => $CSV)
 {
-	$currentrowarray = explode(",", $CSV);
+	$currentrowarray =array_pad( explode(",",$CSV ), 17,null );
 	$query= sprintf("INSERT INTO transaktionen (TransaktionsDatum, BenutzerName, BenutzerKonto, KontoName, KontoNummer,
     TransaktionsTyp, TransaktionsSumme, TransaktionsDevisen, TransaktionsUSumme, TransaktionsUDevisen, EinnameoderAusgabe,
 	KartenNummer, Wertstellung, Mitteilung, Daten, KontoStand, DevisenTyp)  VALUES( %s, %s, %s, %s, %s, %s, %s, %s, %s, 
-	%s, %s, %s, %s, %s, %s, %s, %s,)",$currentrowarray[1], $currentrowarray[2],$currentrowarray[3],$currentrowarray[4],$currentrowarray[5],
-	$currentrowarray[6],$currentrowarray[7],$currentrowarray[8],$currentrowarray[9],$currentrowarray[10],$currentrowarray[11],
-	$currentrowarray[12],$currentrowarray[13],$currentrowarray[14],$currentrowarray[15],$currentrowarray[16],$currentrowarray[17]); 
+	%s, %s, %s, %s, %s, %s, %s, %s,)",$currentrowarray[0], $currentrowarray[$key],$currentrowarray[2],$currentrowarray[3],$currentrowarray[4],
+	$currentrowarray[5],$currentrowarray[6],$currentrowarray[7],$currentrowarray[8],$currentrowarray[9],$currentrowarray[10],
+	$currentrowarray[11],$currentrowarray[12],$currentrowarray[13],$currentrowarray[14],$currentrowarray[15],$currentrowarray[16]); 
 	
 }
 
@@ -99,8 +99,8 @@ echo $count;*/
 		$coin++;
 	}
 		//$numberofitems = count($rowsanditems);
-		echo $coin;*/*/
-$mysqli = new mysqli("localhost","root","","finanzen");
+		echo $coin;*/
+/*$mysqli = new mysqli("localhost","root","","finanzen");
 			if($mysqli->connect_errno)
 			{
 					echo "MySQL Fehler: " . $mysqli->connect_error . "<BR/>";
@@ -123,7 +123,7 @@ $mysqli->real_query("SELECT KundenNr,KundenName,LieferAddresse FROM Kunde");
 		printf("<TR bgcolor='%s'><TD>%s</TD><TD>%s</TD><TD>%s</TD></TR>\n", $bgcolor, $row[0], $row[1], $row[2]); 
 		$i++;
 	}		
-		
+		*/
 		
 ?>
 <form method="post">
@@ -132,7 +132,7 @@ Field:</br> <textarea name="CSV"></textarea>
 </form>
  <A href="http://localhost/session_kill.php">Logout</A>
  
- TYPE BUTTON ONLICK
+
  
  
  
