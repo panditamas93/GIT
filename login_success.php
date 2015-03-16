@@ -45,7 +45,7 @@ $mysqli->close();
 
 
 
-/*echo "<pre>";
+/*echo "<pre>"; // ARRAY PRINT
 print_r($array);
 
 $numberofitems = array_sum(array_map("count", $array));
@@ -63,7 +63,6 @@ for($i=1; $i<$numberofrows+1; $i++){
 		}
 	}
 }
-				
 		echo implode(",", $array[0]);		
 				
 				
@@ -76,36 +75,19 @@ for($i=1; $i<$numberofrows+1; $i++){
 	}
 	
 	
-			
-			
 		
-		
-		
-		
-	
 	/*$sql= "INSERT INTO Finanzen ( TransaktionsDatum, BenutzerName, BenutzerKonto, KontoName, KontoNummer,
     TransaktionsTyp, TransaktionsSumme, TransaktionsDevisen, TransaktionsUSumme, TransaktionsUDevisen, EinnameoderAusgabe,
 	KartenNummer, Wertstellung, Mitteilung, Daten, KontoStand, DevisenTyp) VALUES "*/
 	//$sql= "INSERT INTO Finanzen( TransaktionsDatum) VALUES ($data[$array])";
-
-
-
-
-
-
-
 
 /*$count = 0;
 foreach ($array as $type) {
     $count+= count($type);
 }
 echo $count;*/
-
-
-	
 //GET NUMBER OF ITEMS IN ROW
-	
-	/*$items=explode("\n",$CSV);
+		/*$items=explode("\n",$CSV);
 	$numberofrows=count($items);
 	echo $numberofrows;
 	$rowsanditems = array();
@@ -118,11 +100,44 @@ echo $count;*/
 	}
 		//$numberofitems = count($rowsanditems);
 		echo $coin;*/*/
+$mysqli = new mysqli("localhost","root","","finanzen");
+			if($mysqli->connect_errno)
+			{
+					echo "MySQL Fehler: " . $mysqli->connect_error . "<BR/>";
+			}
+$mysqli->real_query("SELECT KundenNr,KundenName,LieferAddresse FROM Kunde");
+	$result = $mysqli->use_result();
+    $i=1;
+	while ($row = $result->fetch_row() ) {
+		if($i % 2 == 1)
+	{
+		$bgcolor ="blue";
+		$fontcolor ="yellow";
+	}
+	else
+	{
+		$bgcolor ="lightblue";
+		$fontcolor ="red";
+	}
+		
+		printf("<TR bgcolor='%s'><TD>%s</TD><TD>%s</TD><TD>%s</TD></TR>\n", $bgcolor, $row[0], $row[1], $row[2]); 
+		$i++;
+	}		
+		
+		
 ?>
 <form method="post">
 Field:</br> <textarea name="CSV"></textarea>
 <input type="submit">
 </form>
  <A href="http://localhost/session_kill.php">Logout</A>
+ 
+ TYPE BUTTON ONLICK
+ 
+ 
+ 
+ 
+ 
+ 
  </body>
  </html>
