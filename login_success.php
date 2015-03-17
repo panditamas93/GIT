@@ -42,7 +42,7 @@ foreach($array as $key => $CSV)
 	$currentrowarray[$i] =mysql_real_escape_string($currentrowarray[$i]);
 	
 	}
-	
+	if($currentrowarray[0]!='Tranzakció dátuma'){
 	
 	$query= sprintf("INSERT INTO transaktionen (TransaktionsDatum, BenutzerName, BenutzerKonto, KontoName, KontoNummer,
     TransaktionsTyp, TransaktionsSumme, TransaktionsDevisen, TransaktionsUSumme, TransaktionsUDevisen, EinnameoderAusgabe,
@@ -51,7 +51,7 @@ foreach($array as $key => $CSV)
 	$currentrowarray[5],$currentrowarray[6],$currentrowarray[7],$currentrowarray[8],$currentrowarray[9],$currentrowarray[10],
 	$currentrowarray[11],$currentrowarray[12],$currentrowarray[13],$currentrowarray[14],$currentrowarray[15],$currentrowarray[16]); 
 	$mysqli->query($query); 
-	
+	}
 }
 
 
