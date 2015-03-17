@@ -1,15 +1,15 @@
 <?php 
-if ($_SERVER["HTTPS"] != "on")
+/*if ($_SERVER["HTTPS"] != "on")
 {
 	
-		/*header("Location: https://".$_SERVER["HTTP_HOST"].
+		header("Location: https://".$_SERVER["HTTP_HOST"].
 								$_SERVER["REQUEST_URI"]);
 								exit();
 								VAGY
-			header('Location: https://localhost/login.php');*/
+			header('Location: https://localhost/login.php');
 	
 	
-}
+}*/
 
 session_start();
 ?>

@@ -6,7 +6,7 @@
 	?>
 <html>
 <head>
-<title>Database Access</title>
+<title>Insert CSV</title>
 <meta charset='utf-8'>
 </head>
  <body bgproperties="fixed" bgcolor="pink">	
@@ -22,12 +22,12 @@
 	$CSV = $_POST['CSV'];
 	
 	
-//MULTIDIMENSIONAL ARRAY/GET NUMBER OF ROWS
+
 
 $array = array();
 $array = explode("\n", $CSV);
 $numberofrows=count($array);
-//echo $numberofrows;
+//MYSQL KAPCSOLAT/2. EXPLODE/ VÉDELEM "" ELLEN/PARTNER NEVE SOR KIHAGY
 	$mysqli = new mysqli("localhost","root","","finanzen");
 				if($mysqli->connect_errno)
 				{
@@ -54,11 +54,6 @@ foreach($array as $key => $CSV)
 	}
 }
 
-
-
-
-
-
 $mysqli->close(); 
 
 	}
@@ -71,12 +66,5 @@ Field:</br> <textarea name="CSV"></textarea>
 </form>
  <A href="http://localhost/session_kill.php">Logout</A>
  
-
- 
- 
- 
- 
- 
- 
- </body>
+</body>
  </html>
