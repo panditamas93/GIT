@@ -7,7 +7,7 @@
 <html>
 <head>
 <title>Database Access</title>
-<meta charset='utf8_general_ci'>
+<meta charset='utf-8'>
 </head>
  <body bgproperties="fixed" bgcolor="pink">	
  <h1> WELCOME</h1>
@@ -33,6 +33,7 @@ $numberofrows=count($array);
 				{
 					echo "MySQL Fehler: " . $mysqli->connect_error . "<BR/>";
 				}
+			mysqli_set_charset($mysqli, "utf8");
 foreach($array as $key => $CSV)
 {
 	$currentrowarray =explode(",",$CSV );
@@ -62,7 +63,7 @@ $mysqli->close();
 
 		
 ?>
-<form method="post" accept-charset="utf8_general_ci">
+<form method="post" accept-charset="utf-8">
 Field:</br> <textarea name="CSV"></textarea>
 <input type="submit">
 </form>
