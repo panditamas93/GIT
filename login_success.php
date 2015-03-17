@@ -5,6 +5,10 @@
 	
 	?>
 <html>
+<head>
+<title>Database Access</title>
+<meta charset='utf8_general_ci'>
+</head>
  <body bgproperties="fixed" bgcolor="pink">	
  <h1> WELCOME</h1>
  <?php 
@@ -34,6 +38,7 @@ foreach($array as $key => $CSV)
 	$currentrowarray =explode(",",$CSV );
 	
 	
+		
 	
 	
 	$query= sprintf("INSERT INTO transaktionen (TransaktionsDatum, BenutzerName, BenutzerKonto, KontoName, KontoNummer,
@@ -43,6 +48,7 @@ foreach($array as $key => $CSV)
 	$currentrowarray[5],$currentrowarray[6],$currentrowarray[7],$currentrowarray[8],$currentrowarray[9],$currentrowarray[10],
 	$currentrowarray[11],$currentrowarray[12],$currentrowarray[13],$currentrowarray[14],$currentrowarray[15],$currentrowarray[16]); 
 	$mysqli->query($query); 
+	
 }
 
 
@@ -56,7 +62,7 @@ $mysqli->close();
 
 		
 ?>
-<form method="post">
+<form method="post" accept-charset="utf8_general_ci">
 Field:</br> <textarea name="CSV"></textarea>
 <input type="submit">
 </form>
