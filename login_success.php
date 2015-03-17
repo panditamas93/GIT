@@ -37,9 +37,11 @@ $numberofrows=count($array);
 foreach($array as $key => $CSV)
 {
 	$currentrowarray =explode(",",$CSV );
+	for($i=0; $i<17; $i++){
+	$currentrowarray[$i] =stripslashes($currentrowarray[$i]);
+	$currentrowarray[$i] =mysql_real_escape_string($currentrowarray[$i]);
 	
-	
-		
+	}
 	
 	
 	$query= sprintf("INSERT INTO transaktionen (TransaktionsDatum, BenutzerName, BenutzerKonto, KontoName, KontoNummer,
