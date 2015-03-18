@@ -61,9 +61,10 @@ $mysqli->close();
 		
 ?>
 <form method="post" accept-charset="utf-8">
-Field:</br> <textarea name="CSV"></textarea>
+Field:</br> <textarea rows="15" cols="200" name="CSV"></textarea>
 <input type="submit">
 </form>
+<A href="http://localhost/tableaccess.php">Tableaccess</A>
  <A href="http://localhost/session_kill.php">Logout</A>
  
 </body>
