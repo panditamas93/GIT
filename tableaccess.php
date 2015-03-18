@@ -92,7 +92,7 @@
  
  
  
-
+<A href="http://localhost/addtrans.php">Neue Transaktion</br></A>
  <A href="http://localhost/session_kill.php">Logout</A>
  
 </body>

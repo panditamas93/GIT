@@ -64,8 +64,9 @@ $mysqli->close();
 Field:</br> <textarea rows="15" cols="200" name="CSV"></textarea>
 <input type="submit">
 </form>
-<A href="http://localhost/tableaccess.php">Tableaccess</A>
- <A href="http://localhost/session_kill.php">Logout</A>
+<A href="http://localhost/addtrans.php">Neue Transaktion</br></A>
+<A href="http://localhost/tableaccess.php">Tableaccess</br></A>
+<A href="http://localhost/session_kill.php">Logout</A>
  
 </body>
  </html>
