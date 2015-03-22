@@ -15,12 +15,27 @@
  <body>	
  <div id="keret">
 	<div id="fejléc">
-		Welcome
+		<h1>Welcome</h1>
 	</div>
+	
+	<div id="wrapper">
+    <div id="content">
+      <p><strong>Give me csv</strong></p>
+      <p><div id="insert">
+<form method="post" accept-charset="utf-8">
+Field:</br> <textarea rows="15" cols="75" name="CSV"></textarea>
+<input type="submit">
+</form>
+</div></p>
+    </div>
+  </div>
 	<div id="menu">
-	<A href="http://localhost/addtrans.php">Neue Transaktion</br></A>
-	<A href="http://localhost/tableaccess.php">Tableaccess</br></A>
-	<A href="http://localhost/session_kill.php">Logout</A>
+	<p><strong>Menu</strong></p>
+	<ul>
+	<li><A href="http://localhost/addtrans.php">Neue Transaktion</A></li>
+	<li><A href="http://localhost/tableaccess.php">Tableaccess</A></li>
+	<li><A href="http://localhost/session_kill.php">Logout</A>
+	</ul>
 	</div>
  <?php 
 	
@@ -71,14 +86,11 @@ $mysqli->close();
 
 		
 ?>
-<div id="insert">
-<form method="post" accept-charset="utf-8">
-Field:</br> <textarea rows="15" cols="200" name="CSV"></textarea>
-<input type="submit">
-</form>
-</div>
 
- 
+
+ <div id="footer">
+    <p>Panda 2015</p>
+  </div>
  </div>
 </body>
  </html>

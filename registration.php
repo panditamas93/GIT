@@ -9,11 +9,18 @@
 		<div id="keret">
 		
 		<div id="fejléc">
-		Registration
+		<h1>Registration</h1>
 		</div>
 		
+		<div id="wrapper">
+    <div id="content">
+      <p><strong>YESSS</strong></p>
+      <p>ide kéne</p>
+    </div>
+  </div>
+		
 		<div id="menu">
-		MENU </br>
+		<p><strong>MENU</strong></p>
 			</div>
 		
 <?php 
@@ -69,6 +76,10 @@
 		
 
 		<p align='center'><A href="http://localhost/login.php">Log in</A></p>
+		
+		<div id="footer">
+    <p>Panda 2015</p>
+  </div>
 		</div>
     </body> 
 </html> 

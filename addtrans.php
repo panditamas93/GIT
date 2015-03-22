@@ -14,13 +14,21 @@
  <body>	
  <div id="keret">
 	<div id="fejléc">
-	ADD TRANSAKTION
+	<h1>ADD TRANSAKTION</h1>
 	</div>
-	
+	<div id="wrapper">
+    <div id="content">
+      <p><strong>YESSS</strong></p>
+      <p>ide kéne</p>
+    </div>
+  </div>
 	<div id="menu">
-	<A href="http://localhost/addtrans.php">Neue Transaktion</br></A>
-	<A href="http://localhost/tableaccess.php">Tableaccess</br></A>
-	<A href="http://localhost/session_kill.php">Logout</A>
+	<p><strong>Menu</strong></p>
+	<ul>
+	<li><A href="http://localhost/addtrans.php">Neue Transaktion</A></li>
+	<li><A href="http://localhost/tableaccess.php">Tableaccess</A></li>
+	<li><A href="http://localhost/session_kill.php">Logout</A>
+	</ul>
 	</div>
  <?php 
 	
@@ -30,7 +38,9 @@
  
  
  
- 
+ <div id="footer">
+    <p>Panda 2015</p>
+  </div>
  
  </div>
 </body>

@@ -22,11 +22,27 @@ session_start();
     <body> 
 	<div id="keret">
 		<div id="fejléc">
-		Login
+		<h1>Login</h1>
 		</div>
+		
+		<div id="wrapper">
+    <div id="content">
+      <p><strong>Log in</strong></p>
+      <p><div id="login">
+			<form method="POST"> 
+				Benutzerame: <input type="text" name="BenutzerName" /> <br /> 
+				Passwort: <input type="password" name="Passwort" /> <br /> 
+            <input type="submit"/> 
+			</form>
+			</div></p>
+    </div>
+  </div>
 		<div id="menu">
-		MENU </br>
-		<A href="http://localhost/registration.php">Registrieren</A>
+		<p><strong>Menu</strong></p>
+		<ul>
+		<li><A href="http://localhost/registration.php">Registrieren</A></li>
+		
+		</ul>
 		</div>
 	
 <?php 
@@ -63,13 +79,10 @@ session_start();
 		
 	} 
 ?>
-			<div id="login">
-			<form method="POST"> 
-				Benutzerame: <input type="text" name="BenutzerName" /> <br /> 
-				Passwort: <input type="password" name="Passwort" /> <br /> 
-            <input type="submit"/> 
-			</form>
-			</div>
+			
+			<div id="footer">
+    <p>Panda 2015</p>
+  </div>
 		</div>
     </body> 
 </html> 

@@ -15,15 +15,22 @@
  <div id="keret">
  <body>	
 	<div id="fejléc">
-		Klicke um die Tabelle anzuzeigen
+		<h1>Klicke um die Tabelle anzuzeigen</h1>
 	</div>
- 
+ <div id="wrapper">
+    <div id="content">
+      <p><strong>YESSS</strong></p>
+      <p>ide kéne</p>
+    </div>
+  </div>
  
 		<div id="menu">
-		
-		<A href="http://localhost/addtrans.php">Neue Transaktion</br></A>
-		<A href="http://localhost/tableaccess.php">Tableaccess</br></A>
-		<A href="http://localhost/session_kill.php">Logout</A>
+		<p><strong>Menu</strong></p>
+	<ul>
+	<li><A href="http://localhost/addtrans.php">Neue Transaktion</A></li>
+	<li><A href="http://localhost/tableaccess.php">Tableaccess</A></li>
+	<li><A href="http://localhost/session_kill.php">Logout</A>
+	</ul>
 		</div>
  <?php 
 	
@@ -72,7 +79,7 @@
 	}
 	
 	if(!$row[2]){
-		printf("<TR bgcolor='%s'><TD>%s </TD><TD>%s </TD><TD>",$bgcolor, $row[0], $row[1]);
+		printf("<TR bgcolor='%s' font color='%s' ><TD>%s </TD><TD>%s </TD><TD>",$bgcolor,$fontcolor, $row[0], $row[1]);
 		printf("<select>
 			<option value=\"Lebensmittel\">Lebensmittel</option>
 		<option value=\"Sport\">Sport</option>
@@ -82,17 +89,17 @@
 		printf("</TD><TD>%s </TD><TD>%s </TD>
 		<TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD>
 		<TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD></TR></br>", 
-		$bgcolor, $row[3], $row[4], $row[5], $row[6], $row[7], $row[8]
+		 $row[3], $row[4], $row[5], $row[6], $row[7], $row[8]
 		, $row[9], $row[10], $row[11], $row[12], $row[13], $row[14], $row[15], $row[16], $row[17], $row[18]
 		, $row[19]);
 		
 	}
 		
 	else{	
-		printf("<TR bgcolor='%s'><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD>
+		printf("<TR bgcolor='%s' font color='%s'><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD>
 		<TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD>
 		<TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD></TR></br>", 
-		$bgcolor, $row[0], $row[1], $row[2],$row[3], $row[4], $row[5], $row[6], $row[7], $row[8]
+		$bgcolor,$fontcolor, $row[0], $row[1], $row[2],$row[3], $row[4], $row[5], $row[6], $row[7], $row[8]
 		, $row[9], $row[10], $row[11], $row[12], $row[13], $row[14], $row[15], $row[16], $row[17], $row[18]
 		, $row[19]); 
 	}
@@ -111,7 +118,9 @@
 
 
 
-
+<div id="footer">
+    <p>Panda 2015</p>
+  </div>
  
  
  
