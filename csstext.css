@@ -1,0 +1,35 @@
+#keret
+{
+
+
+margin-left:auto;
+margin-right:auto;
+paddling: 10px;
+background-color: #cccccc;
+
+}
+#fejléc
+{
+	text-align: center;
+	height: 50px;
+	color:red;
+	font-size:200%;
+
+}
+#menu{
+
+width:300px;
+float:left;
+border: 5px solid blue;
+border-radius: 25px;
+
+}
+#insert{
+
+width:600px;
+float: left;
+font-style:italy;
+border: 1px solid yellow;
+
+
+}

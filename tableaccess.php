@@ -5,25 +5,38 @@
 	
 	?>
 
-	
+<!DOCTYPE html> 	
 <html>
 <head>
 <title>Show table</title>
 <meta charset='utf-8'>
+<link rel="stylesheet" type="text/css" href="csstext.css" />
 </head>
- <body bgproperties="fixed" bgcolor="pink">	
- <h1> Klicke um die Tabelle anzuzeigen</h1>
+ <div id="keret">
+ <body>	
+	<div id="fejléc">
+		Klicke um die Tabelle anzuzeigen
+	</div>
+ 
+ 
+		<div id="menu">
+		
+		<A href="http://localhost/addtrans.php">Neue Transaktion</br></A>
+		<A href="http://localhost/tableaccess.php">Tableaccess</br></A>
+		<A href="http://localhost/session_kill.php">Logout</A>
+		</div>
  <?php 
 	
 	echo "Hi: ".$_SESSION['myusername']."</br>";
  ?>
- 
+ <div id="gomb">
  <form action="tableaccess.php" method="get">
   <input type="hidden" name="act" value="run">
   <input type="submit" value="Tabelle anzeigen!">
 </form>
+</div>
 
-
+<div id="tábla">
 <TABLE>
 <TR><TH> TransaktionsID</TH><TH> BenutzerID</TH><TH> KategorieName</TH><TH> TransaktionsDatum</TH>
 <TH> BenutzerName</TH><TH> BenutzerKonto</TH><TH> KontoName</TH><TH> KontoNummer</TH>
@@ -57,14 +70,32 @@
 		$bgcolor ="lightblue";
 		$fontcolor ="red";
 	}
+	
+	if(!$row[2]){
+		printf("<TR bgcolor='%s'><TD>%s </TD><TD>%s </TD><TD>",$bgcolor, $row[0], $row[1]);
+		printf("<select>
+			<option value=\"Lebensmittel\">Lebensmittel</option>
+		<option value=\"Sport\">Sport</option>
+		<option value=\"Dienstleistungen\">Dienstleistungen</option>
+		<option value=\"Sonstiges\">Sonstiges</option>
+		</select>");
+		printf("</TD><TD>%s </TD><TD>%s </TD>
+		<TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD>
+		<TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD></TR></br>", 
+		$bgcolor, $row[3], $row[4], $row[5], $row[6], $row[7], $row[8]
+		, $row[9], $row[10], $row[11], $row[12], $row[13], $row[14], $row[15], $row[16], $row[17], $row[18]
+		, $row[19]);
 		
+	}
+		
+	else{	
 		printf("<TR bgcolor='%s'><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD>
 		<TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD>
 		<TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD></TR></br>", 
 		$bgcolor, $row[0], $row[1], $row[2],$row[3], $row[4], $row[5], $row[6], $row[7], $row[8]
 		, $row[9], $row[10], $row[11], $row[12], $row[13], $row[14], $row[15], $row[16], $row[17], $row[18]
 		, $row[19]); 
-		
+	}
 		$i++;
 	}
 
@@ -76,105 +107,16 @@
 ?>
 
 </TABLE>
+</div>
 
-SET KATEGORIE </br>
- 1 <select>
-  <option value="volvo">Volvo</option>
-  <option value="saab">Saab</option>
-  <option value="mercedes">Mercedes</option>
-  <option value="audi">Audi</option>
-</select></br>
-2 <select>
-  <option value="volvo">Volvo</option>
-  <option value="saab">Saab</option>
-  <option value="mercedes">Mercedes</option>
-  <option value="audi">Audi</option>
-</select></br>
-3 <select>
-  <option value="volvo">Volvo</option>
-  <option value="saab">Saab</option>
-  <option value="mercedes">Mercedes</option>
-  <option value="audi">Audi</option>
-</select></br>
-4 <select>
-  <option value="volvo">Volvo</option>
-  <option value="saab">Saab</option>
-  <option value="mercedes">Mercedes</option>
-  <option value="audi">Audi</option>
-</select></br>
-5 <select>
-  <option value="volvo">Volvo</option>
-  <option value="saab">Saab</option>
-  <option value="mercedes">Mercedes</option>
-  <option value="audi">Audi</option>
-</select></br>
-6 <select>
-  <option value="volvo">Volvo</option>
-  <option value="saab">Saab</option>
-  <option value="mercedes">Mercedes</option>
-  <option value="audi">Audi</option>
-</select></br>
-7 <select>
-  <option value="volvo">Volvo</option>
-  <option value="saab">Saab</option>
-  <option value="mercedes">Mercedes</option>
-  <option value="audi">Audi</option>
-</select></br>
-8 <select>
-  <option value="volvo">Volvo</option>
-  <option value="saab">Saab</option>
-  <option value="mercedes">Mercedes</option>
-  <option value="audi">Audi</option>
-</select></br>
-9 <select>
-  <option value="volvo">Volvo</option>
-  <option value="saab">Saab</option>
-  <option value="mercedes">Mercedes</option>
-  <option value="audi">Audi</option>
-</select></br>
-10 <select>
-  <option value="volvo">Volvo</option>
-  <option value="saab">Saab</option>
-  <option value="mercedes">Mercedes</option>
-  <option value="audi">Audi</option>
-</select></br>
-11 <select>
-  <option value="volvo">Volvo</option>
-  <option value="saab">Saab</option>
-  <option value="mercedes">Mercedes</option>
-  <option value="audi">Audi</option>
-</select></br>
-12 <select>
-  <option value="volvo">Volvo</option>
-  <option value="saab">Saab</option>
-  <option value="mercedes">Mercedes</option>
-  <option value="audi">Audi</option>
-</select></br>
-13 <select>
-  <option value="volvo">Volvo</option>
-  <option value="saab">Saab</option>
-  <option value="mercedes">Mercedes</option>
-  <option value="audi">Audi</option>
-</select></br>
+
+
 
  
  
  
  
  
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
-<A href="http://localhost/addtrans.php">Neue Transaktion</br></A>
- <A href="http://localhost/session_kill.php">Logout</A>
- 
+ </div>
 </body>
  </html>

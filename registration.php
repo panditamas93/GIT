@@ -1,8 +1,21 @@
+<!DOCTYPE html> 
 <html> 
-    <head><title>Neuer Benutzer</title></head> 
-    <body bgcolor="lightblue"> 
+    <head>
+	<title>Neuer Benutzer</title>
+	<link rel="stylesheet" type="text/css" href="csstext.css" />
+	</head> 
 	
-		<h1 align="center"> Registration</h1>
+    <body> 
+		<div id="keret">
+		
+		<div id="fejléc">
+		Registration
+		</div>
+		
+		<div id="menu">
+		MENU </br>
+			</div>
+		
 <?php 
     if( isset( $_POST[ 'BenutzerName' ] ) ) { 
         $BenutzerName = $_POST[ 'BenutzerName' ]; 
@@ -46,16 +59,16 @@
 		}
     } 
 ?>
-        <form method="POST" align="center"> 
+			<div id="login">
+	  <form> 
             Benutzername: <input type="text" name="BenutzerName" /> <br /> 
             Passwort:     <input type="password" name="Passwort" /> <br /> 
-			
-			
-            <input type="submit"/> 
+			<input type="submit"/> 
         </form>
-		
+		</div>
 		
 
 		<p align='center'><A href="http://localhost/login.php">Log in</A></p>
+		</div>
     </body> 
 </html> 

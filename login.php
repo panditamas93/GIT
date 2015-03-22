@@ -15,9 +15,20 @@ session_start();
 ?>
 <!DOCTYPE html> 
 <html> 
-    <head><title>Log in</title></head> 
-    <body bgcolor="lightgreen"> 
-		<h1> Log in</h1>
+    <head>
+	<title>Log in</title>
+	<link rel="stylesheet" type="text/css" href="csstext.css" />
+	</head> 
+    <body> 
+	<div id="keret">
+		<div id="fejléc">
+		Login
+		</div>
+		<div id="menu">
+		MENU </br>
+		<A href="http://localhost/registration.php">Registrieren</A>
+		</div>
+	
 <?php 
 
     if( isset( $_POST[ 'BenutzerName' ] ) ) { 
@@ -47,16 +58,18 @@ session_start();
 		else 
 		{
 			echo "<p align='center'> <font color=red  size='4pt'>WRONG USERNAME OR PASSWORD</font> </p>";
+			
 		}
+		
 	} 
 ?>
-        <form method="POST"> 
-            Benutzerame: <input type="text" name="BenutzerName" /> <br /> 
-            Passwort: <input type="password" name="Passwort" /> <br /> 
+			<div id="login">
+			<form method="POST"> 
+				Benutzerame: <input type="text" name="BenutzerName" /> <br /> 
+				Passwort: <input type="password" name="Passwort" /> <br /> 
             <input type="submit"/> 
-        </form>
-		
-			<A href="http://localhost/registration.php">Registrieren</A>
-		
+			</form>
+			</div>
+		</div>
     </body> 
 </html> 

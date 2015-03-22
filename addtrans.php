@@ -4,14 +4,24 @@
 	}
 	
 	?>
-	
+<!DOCTYPE html> 	
 <html>
 <head>
-<title>Insert CSV</title>
+<title>Add transaktion</title>
 <meta charset='utf-8'>
+<link rel="stylesheet" type="text/css" href="csstext.css" />
 </head>
- <body bgproperties="fixed" bgcolor="pink">	
- <h1> WELCOME</h1>
+ <body>	
+ <div id="keret">
+	<div id="fejléc">
+	ADD TRANSAKTION
+	</div>
+	
+	<div id="menu">
+	<A href="http://localhost/addtrans.php">Neue Transaktion</br></A>
+	<A href="http://localhost/tableaccess.php">Tableaccess</br></A>
+	<A href="http://localhost/session_kill.php">Logout</A>
+	</div>
  <?php 
 	
 	echo "Hi: ".$_SESSION['myusername']."</br>";
@@ -19,8 +29,9 @@
  
  
  
- <A href="http://localhost/tableaccess.php">Tableaccess</br></A>
-<A href="http://localhost/session_kill.php">Logout</A>
  
+ 
+ 
+ </div>
 </body>
  </html>

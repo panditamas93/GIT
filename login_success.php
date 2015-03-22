@@ -4,13 +4,24 @@
 	}
 	
 	?>
+<!DOCTYPE html> 
 <html>
 <head>
 <title>Insert CSV</title>
 <meta charset='utf-8'>
+<link rel="stylesheet" type="text/css" href="csstext.css" />
+
 </head>
- <body bgproperties="fixed" bgcolor="pink">	
- <h1> WELCOME</h1>
+ <body>	
+ <div id="keret">
+	<div id="fejléc">
+		Welcome
+	</div>
+	<div id="menu">
+	<A href="http://localhost/addtrans.php">Neue Transaktion</br></A>
+	<A href="http://localhost/tableaccess.php">Tableaccess</br></A>
+	<A href="http://localhost/session_kill.php">Logout</A>
+	</div>
  <?php 
 	
 	echo "Hi: ".$_SESSION['myusername']."</br>";
@@ -38,19 +49,19 @@ foreach($array as $key => $CSV)
 {
 	$currentrowarray =explode(",",$CSV );
 	for($i=0; $i<17; $i++){
-	$currentrowarray[$i] =stripslashes($currentrowarray[$i]);
-	$currentrowarray[$i] =mysql_real_escape_string($currentrowarray[$i]);
+		$currentrowarray[$i] =stripslashes($currentrowarray[$i]);
+		$currentrowarray[$i] =mysql_real_escape_string($currentrowarray[$i]);
 	
 	}
 	if($currentrowarray[0]!='Tranzakció dátuma'){
 	
-	$query= sprintf("INSERT INTO transaktionen (TransaktionsDatum, BenutzerName, BenutzerKonto, KontoName, KontoNummer,
-    TransaktionsTyp, TransaktionsSumme, TransaktionsDevisen, TransaktionsUSumme, TransaktionsUDevisen, EinnameoderAusgabe,
-	KartenNummer, Wertstellung, Mitteilung, Daten, KontoStand, DevisenTyp)  VALUES( '%s','%s','%s','%s','%s','%s','%s','%s','%s','%s'
-	,'%s','%s','%s','%s','%s','%s','%s')",$currentrowarray[0], $currentrowarray[1],$currentrowarray[2],$currentrowarray[3],$currentrowarray[4],
-	$currentrowarray[5],$currentrowarray[6],$currentrowarray[7],$currentrowarray[8],$currentrowarray[9],$currentrowarray[10],
-	$currentrowarray[11],$currentrowarray[12],$currentrowarray[13],$currentrowarray[14],$currentrowarray[15],$currentrowarray[16]); 
-	$mysqli->query($query); 
+		$query= sprintf("INSERT INTO transaktionen (TransaktionsDatum, BenutzerName, BenutzerKonto, KontoName, KontoNummer,
+		TransaktionsTyp, TransaktionsSumme, TransaktionsDevisen, TransaktionsUSumme, TransaktionsUDevisen, EinnameoderAusgabe,
+		KartenNummer, Wertstellung, Mitteilung, Daten, KontoStand, DevisenTyp)  VALUES( '%s','%s','%s','%s','%s','%s','%s','%s','%s','%s'
+		,'%s','%s','%s','%s','%s','%s','%s')",$currentrowarray[0], $currentrowarray[1],$currentrowarray[2],$currentrowarray[3],$currentrowarray[4],
+		$currentrowarray[5],$currentrowarray[6],$currentrowarray[7],$currentrowarray[8],$currentrowarray[9],$currentrowarray[10],
+		$currentrowarray[11],$currentrowarray[12],$currentrowarray[13],$currentrowarray[14],$currentrowarray[15],$currentrowarray[16]); 
+		$mysqli->query($query); 
 	}
 }
 
@@ -60,13 +71,14 @@ $mysqli->close();
 
 		
 ?>
+<div id="insert">
 <form method="post" accept-charset="utf-8">
 Field:</br> <textarea rows="15" cols="200" name="CSV"></textarea>
 <input type="submit">
 </form>
-<A href="http://localhost/addtrans.php">Neue Transaktion</br></A>
-<A href="http://localhost/tableaccess.php">Tableaccess</br></A>
-<A href="http://localhost/session_kill.php">Logout</A>
+</div>
+
  
+ </div>
 </body>
  </html>
