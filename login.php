@@ -31,7 +31,7 @@ session_start();
       <p><div id="login">
 			<form method="POST"> 
 				Benutzerame: <input type="text" name="BenutzerName" /> <br /> 
-				Passwort: <input type="password" name="Passwort" /> <br /> 
+				Passwort: <input type="password" name="Passwort" placeholder="password" /> <br /> 
             <input type="submit"/> 
 			</form>
 			</div></p>

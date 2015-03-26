@@ -29,6 +29,7 @@
 	<ul>
 	<li><A href="http://localhost/addtrans.php">Neue Transaktion</A></li>
 	<li><A href="http://localhost/tableaccess.php">Tableaccess</A></li>
+	<li><A href="http://localhost/settings.php">Settings</A></li>
 	<li><A href="http://localhost/session_kill.php">Logout</A>
 	</ul>
 		</div>
@@ -51,7 +52,7 @@
 	  printf("<div id=\"tábla\">
 	<TABLE>
 		<TR><TH> TransaktionsID</TH><TH> BenutzerID</TH><TH> KategorieName</TH><TH> TransaktionsDatum</TH>
-		<TH> BenutzerName</TH><TH> BenutzerKonto</TH><TH> KontoName</TH><TH> KontoNummer</TH>
+		<TH> PartnerName</TH><TH> BenutzerKonto</TH><TH> KontoName</TH><TH> KontoNummer</TH>
 		<TH> TransaktionsTyp</TH><TH> TransaktionsSumme</TH><TH> TransaktionsDevisen</TH><TH> TransaktionsUSumme</TH>
 		<TH> TransaktionsUDevisen</TH><TH> EinnameoderAusgabe</TH><TH> KartenNummer</TH><TH> Wertstellung</TH>
 		<TH> Mitteilung</TH><TH> Daten</TH><TH> KontoStand</TH><TH> DevisenTyp</TH>
