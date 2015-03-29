@@ -84,12 +84,25 @@
 	
 	if(!$row[2]){
 		printf("<TR bgcolor='%s' font color='%s' ><TD>%s </TD><TD>%s </TD><TD>",$bgcolor,$fontcolor, $row[0], $row[1]);
-		printf("<select>
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		//mysqli_set_charset($mysqli2, "utf8");
+		$mysqli->real_query("SELECT *  FROM kategorie");
+		$result2 = $mysqli->use_result();
+	/*while ($row2 = $result2->fetch_row() ) {
+		echo $row2[0];
+	}*/
+		/*printf("<select>
 			<option value=\"Lebensmittel\">Lebensmittel</option>
 		<option value=\"Sport\">Sport</option>
 		<option value=\"Dienstleistungen\">Dienstleistungen</option>
 		<option value=\"Sonstiges\">Sonstiges</option>
-		</select>");
+		</select>");*/
+			printf("<select>");
+				/*foreach($array as $key => $result2){
+					printf("<option value=%s>%s</option>",$key,$key);
+				}*/
+			printf("</select>");
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		printf("</TD><TD>%s </TD><TD>%s </TD>
 		<TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD>
 		<TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD></TR></br>", 
