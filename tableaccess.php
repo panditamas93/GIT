@@ -59,75 +59,81 @@
 
 
 		</TR>");
-   $mysqli = new mysqli("localhost", "root", "", "finanzen");
-	if ($mysqli->connect_errno) {
-	    echo "<P/>Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
-	}
-	else
-	{
-	mysqli_set_charset($mysqli, "utf8");
-	$mysqli->real_query("SELECT *  FROM Transaktionen");
-	$result = $mysqli->use_result();
-    $i=1;
-	
-	while ($row = $result->fetch_row() ) {
-		if($i % 2 == 1)
-	{
-		$bgcolor ="red";
-		$fontcolor ="yellow";
-	}
-	else
-	{
-		$bgcolor ="lightblue";
-		$fontcolor ="red";
-	}
-	
-	if(!$row[2]){
-		printf("<TR bgcolor='%s' font color='%s' ><TD>%s </TD><TD>%s </TD><TD>",$bgcolor,$fontcolor, $row[0], $row[1]);
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		//mysqli_set_charset($mysqli2, "utf8");
-		$mysqli->real_query("SELECT *  FROM kategorie");
-		$result2 = $mysqli->use_result();
-	/*while ($row2 = $result2->fetch_row() ) {
-		echo $row2[0];
-	}*/
-		/*printf("<select>
-			<option value=\"Lebensmittel\">Lebensmittel</option>
-		<option value=\"Sport\">Sport</option>
-		<option value=\"Dienstleistungen\">Dienstleistungen</option>
-		<option value=\"Sonstiges\">Sonstiges</option>
-		</select>");*/
+	//Kategorie beolvasás tömbbe	
+	$mysqli = new mysqli("localhost", "root", "", "finanzen");
+		if ($mysqli->connect_errno) {
+			echo "<P/>Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+		}
+		else
+		{
+			mysqli_set_charset($mysqli, "utf8");
+			$mysqli->real_query("SELECT KategorieName  FROM Kategorie");
+			$result = $mysqli->use_result();
+			$kategorie = array();
+		
+		$j=0;
+		while ( $row = $result->fetch_row() ) {
+			
+			$kategorie[]= $row;
+			$j++;
+		}
+		
+		for($i=0; $i<$j; $i++){
+			echo $kategorie[$i][0];
+		}
+	$result->close();
+    
+  
+  ////////////////////////////
+  //tabla beolvasás
+		$mysqli->real_query("SELECT *  FROM Transaktionen");
+		$result = $mysqli->use_result();
+		$k=0;
+		
+		while ($row = $result->fetch_row() ) {
+			if($k % 2 == 1)
+			{
+				$bgcolor ="red";
+				$fontcolor ="yellow";
+			}
+			else
+			{
+				$bgcolor ="lightblue";
+				$fontcolor ="red";
+			}
+		if(!$row[2]){
+			printf("<TR bgcolor='%s' font color='%s' ><TD>%s </TD><TD>%s </TD><TD>",$bgcolor,$fontcolor, $row[0], $row[1]);
 			printf("<select>");
-				/*foreach($array as $key => $result2){
-					printf("<option value=%s>%s</option>",$key,$key);
-				}*/
+			for($i=0; $i<$j; $i++){
+				printf("<option value=%s>%s</option>",$kategorie[$i][0], $kategorie[$i][0]);
+			}
 			printf("</select>");
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		printf("</TD><TD>%s </TD><TD>%s </TD>
-		<TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD>
-		<TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD></TR></br>", 
-		 $row[3], $row[4], $row[5], $row[6], $row[7], $row[8]
-		, $row[9], $row[10], $row[11], $row[12], $row[13], $row[14], $row[15], $row[16], $row[17], $row[18]
-		, $row[19]);
-		
-	}
-		
-	else{	
-		printf("<TR bgcolor='%s' font color='%s'><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD>
-		<TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD>
-		<TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD></TR></br>", 
-		$bgcolor,$fontcolor, $row[0], $row[1], $row[2],$row[3], $row[4], $row[5], $row[6], $row[7], $row[8]
-		, $row[9], $row[10], $row[11], $row[12], $row[13], $row[14], $row[15], $row[16], $row[17], $row[18]
-		, $row[19]); 
-	}
-		$i++;
-	}
-
-
-    $result->close();
+			printf("</TD><TD>%s </TD><TD>%s </TD>
+				<TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD>
+				<TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD></TR></br>", 
+				$row[3], $row[4], $row[5], $row[6], $row[7], $row[8]
+				, $row[9], $row[10], $row[11], $row[12], $row[13], $row[14], $row[15], $row[16], $row[17], $row[18]
+				, $row[19]);
+		}
+		else{	
+			printf("<TR bgcolor='%s' font color='%s'><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD>
+			<TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD>
+			<TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD></TR></br>", 
+			$bgcolor,$fontcolor, $row[0], $row[1], $row[2],$row[3], $row[4], $row[5], $row[6], $row[7], $row[8]
+			, $row[9], $row[10], $row[11], $row[12], $row[13], $row[14], $row[15], $row[16], $row[17], $row[18]
+			, $row[19]); 
+		}
+		$k++;
+		}	
+		$result->close();
     $mysqli->close();
-  } 
+		}	
   }
+		
+		
+		
+		
+		
 ?>
 
 </TABLE>
