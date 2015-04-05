@@ -78,9 +78,9 @@
 			$j++;
 		}
 		
-		for($i=0; $i<$j; $i++){
+		/*for($i=0; $i<$j; $i++){
 			echo $kategorie[$i][0];
-		}
+		}*/
 	$result->close();
     
   
@@ -88,8 +88,10 @@
   //tabla beolvasás
 		$mysqli->real_query("SELECT *  FROM Transaktionen");
 		$result = $mysqli->use_result();
-		$k=0;
+		$k=0; //number of selected row
 		
+		echo("<form id=\"search\" action=\"\" method=\"post\">");
+		$KatNum=0; //count of kategories
 		while ($row = $result->fetch_row() ) {
 			if($k % 2 == 1)
 			{
@@ -101,9 +103,12 @@
 				$bgcolor ="lightblue";
 				$fontcolor ="red";
 			}
+			
 		if(!$row[2]){
+			
 			printf("<TR bgcolor='%s' font color='%s' ><TD>%s </TD><TD>%s </TD><TD>",$bgcolor,$fontcolor, $row[0], $row[1]);
-			printf("<select>");
+			printf("<select  name=\"menu%s\" id=\"%s\" >",$KatNum,$KatNum);
+			printf("<option value=\"NULL\" selected>(please select:)</option>");
 			for($i=0; $i<$j; $i++){
 				printf("<option value=%s>%s</option>",$kategorie[$i][0], $kategorie[$i][0]);
 			}
@@ -114,6 +119,9 @@
 				$row[3], $row[4], $row[5], $row[6], $row[7], $row[8]
 				, $row[9], $row[10], $row[11], $row[12], $row[13], $row[14], $row[15], $row[16], $row[17], $row[18]
 				, $row[19]);
+				
+				
+			$KatNum++;	
 		}
 		else{	
 			printf("<TR bgcolor='%s' font color='%s'><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD>
@@ -124,20 +132,55 @@
 			, $row[19]); 
 		}
 		$k++;
+		
 		}	
+		
+		echo("</TABLE>");
+		echo("</div>");
+		//echo("<input type=\"text\" name=\"choicetext\"></div>");
+		echo("<div><input type=\"submit\" value=\"submit\"></div>");
+		echo("</form>");
 		$result->close();
-    $mysqli->close();
+		$mysqli->close();
+		
 		}	
-  }
 		
 		
 		
-		
-		
-?>
 
-</TABLE>
-</div>
+		/*if(isset($_POST['menu0']))
+				{$selectOption = $_POST['menu0'];
+				echo $selectOption;}
+				else{echo ("szar");}
+		echo("</br>");*/
+		for($i=0;$i<$KatNum;$i++){
+		if(isset($_POST['menu'.$i]))
+			{
+				
+				$SelectOption =$_POST['menu'.$i];
+				echo $SelectOption;
+			}
+			
+			else {
+				echo("SZAR");
+				echo ("menu");
+			
+			}
+		}
+			
+		
+  
+  /////////////////////////////////////////////////////
+  //combobox select feldolgozás
+		
+  }
+		?>
+		
+		
+
+
+
+
 
 
 
