@@ -108,10 +108,11 @@
 			
 			printf("<TR bgcolor='%s' font color='%s' ><TD>%s </TD><TD>%s </TD><TD>",$bgcolor,$fontcolor, $row[0], $row[1]);
 			printf("<select  name=\"menu%s\" id=\"%s\" >",$KatNum,$KatNum);
-			printf("<option value=\"NULL\" selected>(please select:)</option>");
+			printf("<option value=\"\" selected>(please select:)</option>");
 			for($i=0; $i<$j; $i++){
 				printf("<option value=%s>%s</option>",$kategorie[$i][0], $kategorie[$i][0]);
 			}
+			${'Menu'.$KatNum}= $row[0];
 			printf("</select>");
 			printf("</TD><TD>%s </TD><TD>%s </TD>
 				<TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD><TD>%s </TD>
@@ -147,32 +148,51 @@
 		
 		
 		
-
-		/*if(isset($_POST['menu0']))
-				{$selectOption = $_POST['menu0'];
-				echo $selectOption;}
-				else{echo ("szar");}
-		echo("</br>");*/
+$mysqli = new mysqli("localhost","root","","finanzen");
+				if($mysqli->connect_errno)
+				{
+					echo "MySQL Fehler: " . $mysqli->connect_error . "<BR/>";
+				}
+			mysqli_set_charset($mysqli, "utf8");
+		$BULI=0;
 		for($i=0;$i<$KatNum;$i++){
 		if(isset($_POST['menu'.$i]))
 			{
 				
 				$SelectOption =$_POST['menu'.$i];
-				echo $SelectOption;
+				if($SelectOption!=NULL){
+				$sql = sprintf("UPDATE Transaktionen SET KategorieName='%s' WHERE TransaktionsID='%s'",$SelectOption,${'Menu'.$i});
+				$mysqli->query($sql); 
+				$BULI=1;
+				
+				}
 			}
 			
 			else {
 				echo("SZAR");
-				echo ("menu");
+				
 			
 			}
 		}
 			
 		
-  
+  $mysqli->close();
   /////////////////////////////////////////////////////
   //combobox select feldolgozás
+	
+	if($BULI==1){
 		
+		echo("<div id=\"gomb\">
+ <form action=\"tableaccess.php\" method=\"get\">
+  <input type=\"hidden\" name=\"act\" value=\"run\">
+  <input type=\"submit\" value=\"REFRESH PAGE!\">
+</form>");
+
+		
+		
+		
+		
+	}	
   }
 		?>
 		
