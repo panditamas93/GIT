@@ -112,7 +112,7 @@ printf("<TR bgcolor='%s' font color='%s' ><TD>%s </TD><TD>%s </TD><TD>",$bgcolor
 		, $row[9], $row[10], $row[11], $row[12], $row[13], $row[14], $row[15], $row[16], $row[17], $row[18]
 		, $row[19]); 
 	}
-		$i++;
+		$i++;	
 	}
 
 
@@ -121,3 +121,89 @@ printf("<TR bgcolor='%s' font color='%s' ><TD>%s </TD><TD>%s </TD><TD>",$bgcolor
   } 
   }
 ?>
+/////////////////////////////////////////////////////////////////////////////////
+STATISTICS
+>
+<body>
+<?php
+    mysql_connect('localhost','root','');
+    mysql_select_db('finanzen');
+?>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript"> 
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {var data = google.visualization.arrayToDataTable([
+   <?php
+   $str=" ['Month', 'Month'] ";
+   
+  SELECT country,COUNT(*)  
+FROM author        
+GROUP BY country;
+   $query="select KategorieName, COUNT(*) as vi, DATE_FORMAT( date, '%M' ) as dat from Transaktionen group by DATE_FORMAT(TransaktionsDatum, '%Y-%M') order by DATE_FORMAT(TransaktionsDatum, '%Y-%M') ASC";  
+   $result=mysql_query($query);   
+   while($rows=mysql_fetch_array($result,MYSQL_BOTH)){
+    $str =$str . ",['". $rows['dat'] ."'," .$rows['vi'] ."]" ;
+   }
+   echo $str;
+   ?>
+        ]);
+
+      var options = {
+          //title: 'Company Performance',
+          hAxis: {title: 'Month', titleTextStyle: {color: 'red'}},
+          vAxis: {title: 'Total views', titleTextStyle: {color: '#FF0000'}, maxValue:'5', minValue:'1'},
+        };
+  
+        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>       
+   <p style="font-size:20px;">Monthly Stats</p>
+   <div id="chart_div" style="width: 400px; height: 200px;"></div>
+</body>
+</html>
+
+/////////////////////////////
+STATISTICS ALPHA
+echo("<html>
+  <head>
+    <script type=\"text/javascript\" src=\"https://www.google.com/jsapi\"></script>
+    <script type=\"text/javascript\">
+      google.load(\"visualization\", \"1.1\", {packages:[\"bar\"]});
+      google.setOnLoadCallback(drawStuff);
+
+      function drawStuff() {
+        var data = new google.visualization.arrayToDataTable([
+          ['Opening Move', 'Percentage'],
+          [\"King's pawn (e4)\", 44],
+          [\"Queen's pawn (d4)\", 31],
+          [\"Knight to King 3 (Nf3)\", 12],
+          [\"Queen's bishop pawn (c4)\", 10],
+          ['Other', 3]
+        ]);
+
+        var options = {
+          title: 'Chess opening moves',
+          width: 900,
+          legend: { position: 'none' },
+          chart: { title: 'Chess opening moves',
+                   subtitle: 'popularity by percentage' },
+          bars: 'horizontal', // Required for Material Bar Charts.
+          axes: {
+            x: {
+              0: { side: 'top', label: 'Percentage'} // Top x-axis.
+            }
+          },
+          bar: { groupWidth: \"90%\" }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('top_x_div'));
+        chart.draw(data, options);
+      };
+    </script>
+  </head>
+  <body>
+    <div id=\"top_x_div\" style=\"width: 900px; height: 500px;\"></div>
+  </body>
+</html>");
