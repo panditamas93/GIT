@@ -52,11 +52,12 @@ $mysqli = new mysqli("localhost", "root", "", "finanzen");
 								FROM Transaktionen  
 								WHERE KategorieName IS NOT NULL
 								GROUP BY KategorieName, MONTH(TransaktionsDatum)
+								ORDER BY MONTH(TransaktionsDatum), KategorieName
 ;");
 			$result = $mysqli->use_result();
 			echo("<TABLE>");
 			$stat = array();
-			$j=0; 
+			
 			while ($row = $result->fetch_row() ) {
 			if($k % 2 == 1)
 			{
@@ -69,12 +70,15 @@ $mysqli = new mysqli("localhost", "root", "", "finanzen");
 				$fontcolor ="red";
 			}
 			$stat[]= $row;
-			$j++;
+			
 			/*printf("<TR bgcolor='%s' font color='%s'><TD>%s </TD><TD>%s</TD><TD>%s</TD></TR></br>", 
-			$bgcolor,$fontcolor, $row[0], $row[1], $row[2] );
-			$k++;*/
-
-
+			$bgcolor,$fontcolor, $row[0], $row[1], $row[2] );*/
+			$k++;
+			}
+			for($i=0; $i<$k; $i++){
+			echo $stat[$i][0];
+			echo $stat[$i][1];
+			echo $stat[$i][2];
 		}
 		echo("</TABLE>");
 		}
@@ -87,8 +91,15 @@ echo("<html>
       function drawChart() {
         var data = google.visualization.arrayToDataTable([ ");
 		
-       echo("   [");
-	  echo(" 'Year', 'Sales', 'Expenses', 'Profit' ");
+		echo("   [");
+		echo(" 'Monat', ");
+		
+		
+		
+		
+		
+		echo("'Sales', 'Expenses', 'Profit'");
+		
 	   echo("],");
         echo("  ['2014', 1000, 400, 200],
           ['2015', 1170, 460, 250],
@@ -98,8 +109,8 @@ echo("<html>
 
         echo ("var options = {
           chart: {
-            title: 'Company Performance',
-            subtitle: 'Sales, Expenses, and Profit: 2014-2017',
+            title: 'Transaktionen',
+            subtitle: 'Monat, Kategoriename und Anzahl',
           },
           bars: 'horizontal' // Required for Material Bar Charts.
         };
