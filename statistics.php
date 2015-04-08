@@ -24,19 +24,11 @@
       
     </div>
   </div>
-	<div id="menu">
-	<p><strong>Menu</strong></p>
-	<ul>
-	<li><A href="http://localhost/addtrans.php">Neue Transaktion</A></li>
-	<li><A href="http://localhost/csv.php">Insert CSV</A></li>
-	<li><A href="http://localhost/tableaccess.php">Tableaccess</A></li>
-	<li><A href="http://localhost/settings.php">Settings</A></li>
-	<li><A href="http://localhost/session_kill.php">Logout</A>
-	</ul>
-	</div>
- <?php 
 	
+ <?php 
+	include'menu.php';
 	echo "Hi: ".$_SESSION['myusername']."</br>";
+	
  ?>
 
 <?php
@@ -46,7 +38,7 @@ $mysqli = new mysqli("localhost", "root", "", "finanzen");
 		}
 		else
 		{
-			$k=0;
+			$k=0; //rownumber
 			mysqli_set_charset($mysqli, "utf8");
 			$mysqli->real_query("SELECT MONTH(TransaktionsDatum), KategorieName,count(*) 
 								FROM Transaktionen  
@@ -79,9 +71,34 @@ $mysqli = new mysqli("localhost", "root", "", "finanzen");
 			echo $stat[$i][0];
 			echo $stat[$i][1];
 			echo $stat[$i][2];
+			$maxmonat=$stat[$i][0];
 		}
 		echo("</TABLE>");
 		}
+		
+/////////////////////////////make javascript ready
+		$tempa = array(); //get only kategorie from array
+		$temp =	$stat[0][1];
+		$tempa[]= $stat[0][1];
+		$i=1; //kategorieanzahl
+		while($i<$k){
+			if($temp ==	$stat[$i][1]){
+				$i++;
+				
+			}
+			else{
+				$temp =	$stat[$i][1];
+				$tempa[]= $stat[$i][1];
+				$i++;
+			}
+		}
+		for($z=0; $z<$i; $z++){
+			
+			echo $tempa[$z];
+		}			
+		
+		
+		
 echo("<html>
   <head>
     <script type=\"text/javascript\" src=\"https://www.google.com/jsapi\"></script>
@@ -93,19 +110,67 @@ echo("<html>
 		
 		echo("   [");
 		echo(" 'Monat', ");
+		//echo first row of statistics
+		for($z=0; $z<$i; $z++){
+			if($z<$i-1){
+				echo("'");
+				echo $tempa[$z];
+				echo("',");
+			}
+			else{
+				echo("'");
+				echo $tempa[$z];
+				echo("'");
+			}
+			
+		}
+		echo("],");
+		////////////////////////////
+		$monat=1;
+		$r=0;
+		$z=0;
+		$ergebnisarray = array();
+		$count=0;
+		while($monat<13 && $r<$k){
+			
+			if($stat[$r][0]==$monat){
+				
+				$ergebnisarray[]=$stat[$r][2];
+				
+				$count++;
+				$r++;
+				
+			}
+			else{
+				if((($stat[$r][0])+1)==$monat){
+					echo("[");
+					for($z=1; $z<$count+1; $z++){
+						if($z=$count){
+						echo $ergebnisarray[$z];
+						}
+						else{
+							echo $ergebnisarray[$z];
+							echo(",");
+							
+						}
+					
+					}
+					echo("]");
+					unset($ergebnisarray);
+					$count=0;
+					$monat++;
+				}
+				else $monat++;
+			}
+		}
+				
+				
+				
 		
 		
 		
 		
-		
-		echo("'Sales', 'Expenses', 'Profit'");
-		
-	   echo("],");
-        echo("  ['2014', 1000, 400, 200],
-          ['2015', 1170, 460, 250],
-          ['2016', 660, 1120, 300],
-          ['2017', 1030, 540, 350]
-        ]); ");
+        echo("]); ");
 
         echo ("var options = {
           chart: {

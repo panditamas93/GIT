@@ -16,5 +16,6 @@ div#keret{width:700px;margin:0 auto}
 div#wrapper{float:left;width:100%}
 div#content{margin: 0 150px}
 div#menu{float:left;width:150px;margin-left:-700px}
+div#login{float:left;padding:5px 10px}
 
 div#footer{clear:left;width:100%}

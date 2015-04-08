@@ -19,12 +19,12 @@
     </div>
   </div>
 		
-		<div id="menu">
-		<p><strong>MENU</strong></p>
-			</div>
+		
 		
 <?php 
+	include'menu.php';
     if( isset( $_POST[ 'BenutzerName' ] ) ) { 
+		
         $BenutzerName = $_POST[ 'BenutzerName' ]; 
         $Passwort     = $_POST[ 'Passwort' ]; 
 		$md5hash = md5($Passwort);
@@ -61,13 +61,14 @@
 		
 				$mysqli->query($query); 
 				$mysqli->close(); 
-
+		
 		echo "<p align='center'> <font color=blue  size='6pt'>Neuer Benutzer gespeichert</font> </p>";
 		}
     } 
+	
 ?>
 			<div id="login">
-	  <form> 
+	  <form method="POST"> 
             Benutzername: <input type="text" name="BenutzerName" /> <br /> 
             Passwort:     <input type="password" name="Passwort" /> <br /> 
 			<input type="submit"/> 

@@ -37,16 +37,10 @@ session_start();
 			</div></p>
     </div>
   </div>
-		<div id="menu">
-		<p><strong>Menu</strong></p>
-		<ul>
-		<li><A href="http://localhost/registration.php">Registrieren</A></li>
 		
-		</ul>
-		</div>
 	
 <?php 
-
+		include'menu.php';
     if( isset( $_POST[ 'BenutzerName' ] ) ) { 
         $BenutzerName = $_POST[ 'BenutzerName' ]; 
         $Passwort= $_POST[ 'Passwort' ]; 
