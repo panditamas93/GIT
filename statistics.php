@@ -126,49 +126,63 @@ echo("<html>
 		}
 		echo("],");
 		////////////////////////////
-		$monat=1;
 		$r=0;
+		$billen=0;
+		$monat=1;
 		$z=0;
-		$ergebnisarray = array();
-		$count=0;
 		while($monat<13 && $r<$k){
 			
 			if($stat[$r][0]==$monat){
-				
-				$ergebnisarray[]=$stat[$r][2];
-				
-				$count++;
-				$r++;
+				if($stat[$r][1] == $tempa[$z]){
+					if($billen==0){
+						echo ("[");
+						echo $stat[$r][0];
+						echo (",");
+						echo $stat[$r][2];
+						echo(",");
+						$billen=1;
+						$r++;
+					}
+					else{
+						if($r==$k-1){
+							echo $stat[$r][2];
+							echo ("]");
+							$r++;
+						}
+						else{
+							if($stat[$r+1][0]==$monat){
+							echo $stat[$r][2];
+							echo (",");
+							$r++;
+							}
+							else{
+								echo $stat[$r][2];
+							$r++;
+							}
+						}
+					}
+				}
+				else{
+					if($z==$i-1){
+						$z=0;
+					}
+					else{
+						$z++;
+					}
+				}	
 				
 			}
 			else{
-				if((($stat[$r][0])+1)==$monat){
-					echo("[");
-					for($z=1; $z<$count+1; $z++){
-						if($z=$count){
-						echo $ergebnisarray[$z];
-						}
-						else{
-							echo $ergebnisarray[$z];
-							echo(",");
-							
-						}
-					
-					}
-					echo("]");
-					unset($ergebnisarray);
-					$count=0;
-					$monat++;
-				}
-				else $monat++;
-			}
+				echo("]");
+				$monat++;
+				$billen=0;
 		}
 				
 				
 				
 		
 		
-		
+		}
 		
         echo("]); ");
 

@@ -1,7 +1,9 @@
-<?php 
-
-session_start();
-?>
+<?php session_start();
+	if(!isset($_SESSION['myusername'])){
+	header("location:login.php");
+	}
+	
+	?>
 <!DOCTYPE html> 
 <html> 
     <head>

@@ -73,7 +73,7 @@ session_start();
 		
 	} 
 ?>
-			
+			<A href="http://localhost/registration.php">Registration</A>
 			<div id="footer">
     <p>Panda 2015</p>
   </div>
