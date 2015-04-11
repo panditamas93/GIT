@@ -130,7 +130,7 @@ $mysqli = new mysqli("localhost", "root", "", "finanzen");
 		}			
 		echo("</TABLE>");
 		
-		
+		echo $kategorieanzahl;
 echo("<html>
   <head>
     <script type=\"text/javascript\" src=\"https://www.google.com/jsapi\"></script>
@@ -167,15 +167,38 @@ echo("<html>
 			if($stat[$r][0]==$monat){
 				if($stat[$r][1] == $tempa[$z]){
 					if($billen==0){
-						echo ("[");
-						echo("'");
-						echo $stat[$r][0];
-						echo(". Monat'");
-						echo (",");
-						echo $stat[$r][2];
-						echo(",");
-						$billen=1;
-						$r++;
+						if($z==0){
+						
+							echo ("[");
+							echo("'");
+							echo $stat[$r][0];
+							echo(". Monat'");
+							
+							echo (",");
+							echo $stat[$r][2];
+							echo(",");
+							$billen=1;
+							$r++;
+						}
+						else{
+							echo ("[");
+							echo("'");
+							echo $stat[$r][0];
+							echo(". Monat'");
+							//echo $z;
+							echo (",");
+							for($yiss=0;$yiss<$z;$yiss++){
+								echo("0,");
+							}
+							echo $stat[$r][2];
+							if($r<$k-1){
+								echo(",");
+							}
+							
+							$billen=1;
+							$r++;
+							
+						}
 					}
 					else{
 						if($r==$k-1){
@@ -244,14 +267,15 @@ echo("<html>
 			}
 			else{
 				
-				while($z<$kategorieanzahl-2){
-									echo("0,");
+				/*while($z<$kategorieanzahl-2){
+									echo("0,kakika");
 									$z++;
 								}
 								if($z==$kategorieanzahl-1){
 									//echo("0");
 									$z=0;
-								}
+								}*/
+				$z=0;
 			
 				
 				echo("]");
