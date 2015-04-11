@@ -47,7 +47,7 @@ $mysqli = new mysqli("localhost", "root", "", "finanzen");
 								ORDER BY MONTH(TransaktionsDatum), KategorieName
 ;");
 			$result = $mysqli->use_result();
-			echo("<TABLE>");
+			
 			$stat = array();
 			
 			while ($row = $result->fetch_row() ) {
@@ -67,10 +67,19 @@ $mysqli = new mysqli("localhost", "root", "", "finanzen");
 			$bgcolor,$fontcolor, $row[0], $row[1], $row[2] );*/
 			$k++;
 			}
+			echo("<TABLE><TR><TH>Monat</TH><TH>Kategorie</TH><TH>Anzahl</TH></TR>");
 			for($i=0; $i<$k; $i++){
+			echo("<TR>");
+			echo("<TD>");
 			echo $stat[$i][0];
+			echo("</TD>");
+			echo("<TD>");
 			echo $stat[$i][1];
+			echo("</TD>");
+			echo("<TD>");
 			echo $stat[$i][2];
+			echo("</TD>");
+			echo("</TR>");
 			$maxmonat=$stat[$i][0];
 		}
 		echo("</TABLE>");
@@ -80,23 +89,43 @@ $mysqli = new mysqli("localhost", "root", "", "finanzen");
 		$tempa = array(); //get only kategorie from array
 		$temp =	$stat[0][1];
 		$tempa[]= $stat[0][1];
-		$i=1; //kategorieanzahl
+		$i=1; 
+		$trigger=0;
+		$kategorieanzahl=1; //kategorieanzahl
+		
+		//////////////////////////////////////////////////////////////////////////////////6
+		
+		
+		
+		
 		while($i<$k){
-			if($temp ==	$stat[$i][1]){
+			$temp =	$stat[$i][1];
+			for($j=0;$j<$kategorieanzahl;$j++){
+				if($temp ==	$tempa[$j]) $trigger=1;
+				
+			}
+			if($trigger==1){
 				$i++;
+				$trigger=0;
 				
 			}
 			else{
-				$temp =	$stat[$i][1];
+				
 				$tempa[]= $stat[$i][1];
+				$kategorieanzahl++;
 				$i++;
 			}
 		}
-		for($z=0; $z<$i; $z++){
-			
+		echo("<TABLE>");
+		echo("<TR><TH>Kategorien</TH></TR>");
+		for($z=0; $z<$kategorieanzahl; $z++){
+			echo("<TR>");
+			echo("<TD>");
 			echo $tempa[$z];
+			echo("</TD>");
+			echo("</TR>");
 		}			
-		
+		echo("</TABLE>");
 		
 		
 echo("<html>
@@ -111,8 +140,8 @@ echo("<html>
 		echo("   [");
 		echo(" 'Monat', ");
 		//echo first row of statistics
-		for($z=0; $z<$i; $z++){
-			if($z<$i-1){
+		for($z=0; $z<$kategorieanzahl; $z++){
+			if($z<$kategorieanzahl-1){
 				echo("'");
 				echo $tempa[$z];
 				echo("',");
@@ -128,7 +157,7 @@ echo("<html>
 		////////////////////////////
 		$r=0;
 		$billen=0;
-		$monat=1;
+		$monat= $stat[0][0];
 		$z=0;
 		while($monat<13 && $r<$k){
 			
@@ -145,9 +174,28 @@ echo("<html>
 					}
 					else{
 						if($r==$k-1){
-							echo $stat[$r][2];
+							
+							if($z==$kategorieanzahl-1){
+								echo $stat[$r][2];
+								
+							}
+							else{
+								echo $stat[$r][2];
+								echo(",");
+								while($z<$kategorieanzahl-2){
+									echo("0,");
+									$z++;
+								}
+								$z++;
+								if($z==$kategorieanzahl-1){
+									echo("0");
+								}
+								
+							
 							echo ("]");
+							
 							$r++;
+							}
 						}
 						else{
 							if($stat[$r+1][0]==$monat){
@@ -163,17 +211,28 @@ echo("<html>
 					}
 				}
 				else{
-					if($z==$i-1){
+					if($z==$kategorieanzahl-1){
 						$z=0;
 					}
 					else{
 						$z++;
+						if($stat[$r][1] != $tempa[$z]){
+							if($r<$k-1){
+								echo("0,");
+							}
+							else{
+								echo("0");
+							}
+						}
+						
 					}
 				}	
 				
 			}
 			else{
 				echo("]");
+				echo(",");
+				//echo("vége");
 				$monat++;
 				$billen=0;
 		}
@@ -183,7 +242,8 @@ echo("<html>
 		
 		
 		}
-		
+		//echo $z;
+		//echo $kategorieanzahl;
         echo("]); ");
 
         echo ("var options = {
