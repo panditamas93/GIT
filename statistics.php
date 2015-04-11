@@ -84,38 +84,41 @@ $mysqli = new mysqli("localhost", "root", "", "finanzen");
 		}
 		echo("</TABLE>");
 		}
+		$result->close();
+//get kategoriename ordered		
+		$mysqli->real_query("SELECT KategorieName
+								FROM Transaktionen  
+								WHERE KategorieName IS NOT NULL
+								GROUP BY KategorieName
+								ORDER BY  KategorieName
+;");
+		$result = $mysqli->use_result();
+		$tempa= array();
+		$kategorieanzahl=0;
+		while ($row = $result->fetch_row() ) {
+			echo $row[0];
+			$tempa[] = $row[0];
+			$kategorieanzahl++;
+		}
+		
+		
+	
 		
 /////////////////////////////make javascript ready
-		$tempa = array(); //get only kategorie from array
-		$temp =	$stat[0][1];
-		$tempa[]= $stat[0][1];
-		$i=1; 
-		$trigger=0;
-		$kategorieanzahl=1; //kategorieanzahl
+		
+		 
 		
 		//////////////////////////////////////////////////////////////////////////////////6
 		
 		
 		
 		
-		while($i<$k){
-			$temp =	$stat[$i][1];
-			for($j=0;$j<$kategorieanzahl;$j++){
-				if($temp ==	$tempa[$j]) $trigger=1;
-				
-			}
-			if($trigger==1){
-				$i++;
-				$trigger=0;
-				
-			}
-			else{
-				
-				$tempa[]= $stat[$i][1];
-				$kategorieanzahl++;
-				$i++;
-			}
-		}
+	
+		//sort($tempa, SORT_NATURAL | SORT_FLAG_CASE);
+		//sort($tempa);
+		
+		
+		//////////////////////////////////////////////////////////////////////////////////////////
 		echo("<TABLE>");
 		echo("<TR><TH>Kategorien</TH></TR>");
 		for($z=0; $z<$kategorieanzahl; $z++){
@@ -206,7 +209,15 @@ echo("<html>
 							$r++;
 							}
 							else{
-								echo $stat[$r][2];
+								if($z<$kategorieanzahl-1){
+									echo $stat[$r][2];
+									echo(",");
+								}
+								else{
+									echo $stat[$r][2];
+									
+								}
+								
 							$r++;
 							}
 						}
@@ -232,6 +243,17 @@ echo("<html>
 				
 			}
 			else{
+				
+				while($z<$kategorieanzahl-2){
+									echo("0,");
+									$z++;
+								}
+								if($z==$kategorieanzahl-1){
+									//echo("0");
+									$z=0;
+								}
+			
+				
 				echo("]");
 				echo(",");
 				//echo("vége");
