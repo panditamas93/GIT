@@ -165,7 +165,9 @@ echo("<html>
 				if($stat[$r][1] == $tempa[$z]){
 					if($billen==0){
 						echo ("[");
+						echo("'");
 						echo $stat[$r][0];
+						echo(". Monat'");
 						echo (",");
 						echo $stat[$r][2];
 						echo(",");
