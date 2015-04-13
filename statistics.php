@@ -177,6 +177,22 @@ echo("<html>
 							echo (",");
 							echo $stat[$r][2];
 							echo(",");
+							If($r==$k-1){
+								If($z<$kategorieanzahl-1){
+									for($lep=$z;$lep<$kategorieanzahl-2;$lep++){
+										echo("0,");
+										
+									}
+									$z=$lep;
+									$z++;
+
+							} 
+								if($z==$kategorieanzahl-1){
+								echo("0");
+								echo("]");
+								}
+
+							} 
 							$billen=1;
 							$r++;
 						}
@@ -194,7 +210,19 @@ echo("<html>
 							if($r<$k-1){
 								echo(",");
 							}
-							
+							If($r==$k-1){
+								If($z<$kategorieanzahl-1){
+									for($lep=$z;$lep<$kategorieanzahl-1;$lep++){
+										echo("0,");
+									}
+
+							} 
+								if($z==$kategorieanzahl-1){
+								echo("0");
+								echo("]");
+								}
+
+							} 
 							$billen=1;
 							$r++;
 							
@@ -205,7 +233,7 @@ echo("<html>
 							
 							if($z==$kategorieanzahl-1){
 								echo $stat[$r][2];
-								
+								$r++;
 							}
 							else{
 								echo $stat[$r][2];
@@ -314,6 +342,8 @@ echo("<html>
 </html> ");
 
 ?>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/eq2d_6gOHrQ" frameborder="0" allowfullscreen></iframe>
+
  <div id="footer">
     <p>Panda 2015</p>
   </div>
