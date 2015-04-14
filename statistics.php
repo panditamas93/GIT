@@ -1,4 +1,15 @@
-<?php session_start();
+<?php 
+	if ($_SERVER["HTTPS"] != "on")
+{
+			header('Location: https://localhost/statistics.php');
+	}
+
+
+
+	
+	
+	
+	session_start();
 	if(!isset($_SESSION['myusername'])){
 	header("location:login.php");
 	}
@@ -40,7 +51,7 @@ $mysqli = new mysqli("localhost", "root", "", "finanzen");
 		{
 			$k=0; //rownumber
 			mysqli_set_charset($mysqli, "utf8");
-			$mysqli->real_query("SELECT MONTH(TransaktionsDatum), KategorieName,count(*) 
+			$mysqli->real_query("SELECT MONTH(TransaktionsDatum), KategorieName,SUM(TransaktionsSumme) 
 								FROM Transaktionen  
 								WHERE KategorieName IS NOT NULL
 								GROUP BY KategorieName, MONTH(TransaktionsDatum)

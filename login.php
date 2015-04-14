@@ -10,6 +10,10 @@
 	
 	
 }*/
+if ($_SERVER["HTTPS"] != "on")
+{
+			header('Location: https://localhost/login.php');
+	}
 
 session_start();
 ?>

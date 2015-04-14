@@ -1,4 +1,10 @@
 <!DOCTYPE html> 
+<?php
+if ($_SERVER["HTTPS"] != "on")
+{
+			header('Location: https://localhost/resgistration.php');
+	}
+?>
 <html> 
     <head>
 	<title>Neuer Benutzer</title>

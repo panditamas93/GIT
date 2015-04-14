@@ -1,4 +1,11 @@
-<?php session_start();
+<?php
+	if ($_SERVER["HTTPS"] != "on")
+{
+			header('Location: https://localhost/csv.php');
+	}
+	
+	
+	session_start();
 	if(!isset($_SESSION['myusername'])){
 	header("location:login.php");
 	}
