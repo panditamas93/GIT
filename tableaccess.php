@@ -179,11 +179,7 @@ $mysqli = new mysqli("localhost","root","","finanzen");
 	
 	if($BULI==1){
 		
-		echo("<div id=\"gomb\">
- <form action=\"tableaccess.php\" method=\"get\">
-  <input type=\"hidden\" name=\"act\" value=\"run\">
-  <input type=\"submit\" value=\"REFRESH PAGE!\">
-</form>");
+		echo("<meta http-equiv=\"refresh\" content=\"0\">");
 
 		
 		
