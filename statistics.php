@@ -107,7 +107,7 @@ $mysqli = new mysqli("localhost", "root", "", "finanzen");
 		$tempa= array();
 		$kategorieanzahl=0;
 		while ($row = $result->fetch_row() ) {
-			echo $row[0];
+			//echo $row[0];
 			$tempa[] = $row[0];
 			$kategorieanzahl++;
 		}
@@ -130,7 +130,7 @@ $mysqli = new mysqli("localhost", "root", "", "finanzen");
 		
 		
 		//////////////////////////////////////////////////////////////////////////////////////////
-		echo("<TABLE>");
+		/*echo("<TABLE>");
 		echo("<TR><TH>Kategorien</TH></TR>");
 		for($z=0; $z<$kategorieanzahl; $z++){
 			echo("<TR>");
@@ -139,9 +139,9 @@ $mysqli = new mysqli("localhost", "root", "", "finanzen");
 			echo("</TD>");
 			echo("</TR>");
 		}			
-		echo("</TABLE>");
+		echo("</TABLE>");*/
 		
-		echo $kategorieanzahl;
+		//echo $kategorieanzahl;
 echo("<html>
   <head>
     <script type=\"text/javascript\" src=\"https://www.google.com/jsapi\"></script>
@@ -353,7 +353,7 @@ echo("<html>
 </html> ");
 
 ?>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/eq2d_6gOHrQ" frameborder="0" allowfullscreen></iframe>
+
 
  <div id="footer">
     <p>Panda 2015</p>
