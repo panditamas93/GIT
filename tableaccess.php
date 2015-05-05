@@ -82,7 +82,7 @@ if ($_SERVER["HTTPS"] != "on")
     
   
   ////////////////////////////
-  //tabla beolvasás
+  //tabla kiirás
 		$mysqli->real_query("SELECT *  FROM Transaktionen");
 		$result = $mysqli->use_result();
 		$k=0; //number of selected row
@@ -164,12 +164,6 @@ $mysqli = new mysqli("localhost","root","","finanzen");
 				
 				}
 			}
-			
-			/*else {
-				echo("SZAR");
-				
-			
-			}*/
 		}
 			
 		
@@ -180,11 +174,6 @@ $mysqli = new mysqli("localhost","root","","finanzen");
 	if($BULI==1){
 		
 		echo("<meta http-equiv=\"refresh\" content=\"0\">");
-
-		
-		
-		
-		
 	}	
   }
 		?>
