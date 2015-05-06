@@ -74,7 +74,7 @@ Field:</br> <textarea rows="15" cols="75" name="CSV"></textarea>
 				WHERE '$currentrowarray[1]'  LIKE CONCAT('%', Zeichenkette, '%')";
 					$result=mysqli_query($mysqli,$sql);
 					$count=mysqli_num_rows($result);
-					echo $count;
+					//echo $count;
 					if($count!=0){
 						$KategName = array();
 								while ( $row = $result->fetch_row() ) {

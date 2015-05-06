@@ -130,7 +130,7 @@ $mysqli = new mysqli("localhost", "root", "", "finanzen");
 		
 		
 		//////////////////////////////////////////////////////////////////////////////////////////
-		/*echo("<TABLE>");
+		echo("<TABLE>");
 		echo("<TR><TH>Kategorien</TH></TR>");
 		for($z=0; $z<$kategorieanzahl; $z++){
 			echo("<TR>");
@@ -139,8 +139,8 @@ $mysqli = new mysqli("localhost", "root", "", "finanzen");
 			echo("</TD>");
 			echo("</TR>");
 		}			
-		echo("</TABLE>");*/
-		
+		echo("</TABLE>");
+		echo $kategorieanzahl;
 		//echo $kategorieanzahl;
 echo("<html>
   <head>
@@ -168,6 +168,7 @@ echo("<html>
 			
 		}
 		echo("],");
+		
 		////////////////////////////
 		$r=0;
 		$billen=0;
@@ -245,6 +246,8 @@ echo("<html>
 							if($z==$kategorieanzahl-1){
 								echo $stat[$r][2];
 								$r++;
+								/////////////
+								echo ("]");
 							}
 							else{
 								echo $stat[$r][2];
