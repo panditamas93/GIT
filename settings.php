@@ -66,28 +66,25 @@
 						{
 							echo "MySQL Fehler: " . $mysqli->connect_error . "<BR/>";
 						}
-						mysqli_set_charset($mysqli, "utf8");
-						$mysqli->real_query("SELECT KategorieID FROM Kategorie WHERE KategorieName='$SelectOption' ");
-						$result = $mysqli->use_result();
-						$kategorie = array();
-						while ( $row = $result->fetch_row() ) {
+							mysqli_set_charset($mysqli, "utf8");
+							$mysqli->real_query("SELECT KategorieID FROM Kategorie WHERE KategorieName='$SelectOption' ");
+							$result = $mysqli->use_result();
+							$kategorie = array();
+								while ( $row = $result->fetch_row() ) {
 			
-							$kategorie[]= $row;
-						}
+									$kategorie[]= $row;
+								}
 						//////echo $kategorie[0][0];
 						$result->close();
-						
-						
-						
 						
 						$query=sprintf("INSERT INTO Autokategorie(KategorieID, Zeichenkette) 
 							VALUES('%s','%s')" 
                         , mysql_real_escape_string($kategorie[0][0]) 
                         , mysql_real_escape_string($SelectOption2) );
 						
-		echo("<h1><font color=\"red\">SUCCCEESSSSSS</font></h1>");
-				$mysqli->query($query); 
-				$mysqli->close();		
+						echo("<h1><font color=\"red\">SUCCCEESSSSSS</font></h1>");
+						$mysqli->query($query); 
+						$mysqli->close();		
 						
 						
 						

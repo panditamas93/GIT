@@ -189,6 +189,7 @@ echo("<html>
 							echo (",");
 							echo $stat[$r][2];
 							echo(",");
+						
 							If($r==$k-1){
 								If($z<$kategorieanzahl-1){
 									for($lep=$z;$lep<$kategorieanzahl-2;$lep++){
