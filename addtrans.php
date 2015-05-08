@@ -22,8 +22,9 @@
  <body>	
  
  <div id="keret">
+ 
 	<div id="fejléc">
-	<h1>ADD TRANSAKTION</h1>
+	<h1>Add transaktion</h1>
 	</div>
 	<div id="wrapper">
     <div id="content">

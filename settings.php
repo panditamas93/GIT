@@ -33,7 +33,7 @@
 <?php
 		
 		 include'menu.php';
-	
+		echo "Hi: ".$_SESSION['myusername']."</br>";
 	//Add kategorie
 		if( isset( $_POST[ 'KategorieName' ] ) ) {
 			$KategorieName= $_POST['KategorieName'];
@@ -92,7 +92,8 @@
 				}
 				
 			}
-			//KAtegorieliste
+			echo("<div id=\"table\">");
+	//KAtegorieliste
 			$mysqli = new mysqli("localhost", "root", "", "finanzen");
 			if ($mysqli->connect_errno) {
 				echo "<P/>Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
@@ -103,6 +104,8 @@
 					$mysqli->real_query("SELECT *  FROM Kategorie");
 					$result = $mysqli->use_result();
 					$i=1;
+echo("<TABLE border=\"1\" align:left vertical-align:top>");
+echo("<TR><TD>");
 				echo("<TABLE>");
 				echo("<TR><TH>KategorieID</TH><TH> KategorieName</TH></TR>");
 				while ($row = $result->fetch_row() ) {
@@ -116,13 +119,14 @@
 					$bgcolor ="lightblue";
 					$fontcolor ="red";
 					}
-		printf("<TR bgcolor='%s' font color='%s' ><TD>%s</TD><TD>%s</TD></TR></br>", $bgcolor,$fontcolor,$row[0],$row[1]);
+		printf("<TR bgcolor='%s' font color='%s' ><TD>%s</TD><TD>%s</TD></TR>", $bgcolor,$fontcolor,$row[0],$row[1]);
 		$i++;
 		
 				}	
 				echo("</TABLE>");
 			$mysqli->close();
 			}
+echo("</TD>");			
 	//Autokategorieliste
 			$mysqli = new mysqli("localhost", "root", "", "finanzen");
 			if ($mysqli->connect_errno) {
@@ -134,6 +138,7 @@
 					$mysqli->real_query("SELECT *  FROM autokategorie JOIN Kategorie ON Kategorie.KategorieID = autokategorie.KategorieID");
 					$result = $mysqli->use_result();
 					$i=1;
+echo("<TD>");					
 				echo("<TABLE>");
 				echo("<TR><TH> AutokategorieID</TH><TH> Zeichenkette</TH><TH> KategorieID</TH><TH> KategorieName</TH></TR>");
 				while ($row = $result->fetch_row() ) {
@@ -147,7 +152,7 @@
 					$bgcolor ="lightblue";
 					$fontcolor ="red";
 					}
-		printf("<TR bgcolor='%s' font color='%s' ><TD>%s</TD><TD>%s</TD><TD>%s</TD><TD>%s</TD></TR></br>", $bgcolor,$fontcolor,$row[0],$row[1],$row[3],$row[4]);
+		printf("<TR bgcolor='%s' font color='%s' ><TD>%s</TD><TD>%s</TD><TD>%s</TD><TD>%s</TD></TR>", $bgcolor,$fontcolor,$row[0],$row[1],$row[3],$row[4]);
 		$i++;
 		
 				}	
@@ -155,14 +160,18 @@
 			$result->close();
 			$mysqli->close();
 			}
-		
+echo("</TD></TR>");
+
 ?>	
+<TR><TD>
 	<h2>Add neue Kategorie</h2>
 	<p><div id="login">
 			<form method="POST"> 
 				Add neue Kategorie:<input type="text" name="KategorieName" /> <br /> 
-			<input type="submit"/> 
+			<input type="submit" value="submit"/> 
 			</form>
+</TD>
+<TD>
 	<h2>Add neue Zeichenkette</h2>
 <?php	//Combobox mit Kategorie
 		$mysqli = new mysqli("localhost", "root", "", "finanzen");
@@ -204,9 +213,10 @@
 			<input type="submit" value="submit">
 			</form>
 			</div></p>
-		
+	</TD></TR>
+	</TABLE>
 
-			
+			</div>
 			<div id="footer">
     <p>Panda 2015</p>
   </div>

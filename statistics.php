@@ -41,7 +41,7 @@
 	echo "Hi: ".$_SESSION['myusername']."</br>";
 	
  ?>
-
+<div id="table">
 <?php
 $mysqli = new mysqli("localhost", "root", "", "finanzen");
 		if ($mysqli->connect_errno) {
@@ -78,6 +78,8 @@ $mysqli = new mysqli("localhost", "root", "", "finanzen");
 			$bgcolor,$fontcolor, $row[0], $row[1], $row[2] );*/
 			$k++;
 			}
+			echo("<TABLE>");
+			echo("<TR><TD>");
 			echo("<TABLE><TR><TH>Monat</TH><TH>Kategorie</TH><TH>Anzahl</TH></TR>");
 			for($i=0; $i<$k; $i++){
 			echo("<TR>");
@@ -94,6 +96,7 @@ $mysqli = new mysqli("localhost", "root", "", "finanzen");
 			$maxmonat=$stat[$i][0];
 		}
 		echo("</TABLE>");
+		echo("</TD>");
 		}
 		$result->close();
 //get kategoriename ordered		
@@ -111,25 +114,9 @@ $mysqli = new mysqli("localhost", "root", "", "finanzen");
 			$tempa[] = $row[0];
 			$kategorieanzahl++;
 		}
-		
-		
-	
-		
-/////////////////////////////make javascript ready
-		
-		 
-		
-		//////////////////////////////////////////////////////////////////////////////////6
-		
-		
-		
-		
-	
-		//sort($tempa, SORT_NATURAL | SORT_FLAG_CASE);
-		//sort($tempa);
-		
-		
-		//////////////////////////////////////////////////////////////////////////////////////////
+			
+/////////////////////////////////////////////////////////////////////////////////////////
+		echo("<TD>");
 		echo("<TABLE>");
 		echo("<TR><TH>Kategorien</TH></TR>");
 		for($z=0; $z<$kategorieanzahl; $z++){
@@ -140,8 +127,8 @@ $mysqli = new mysqli("localhost", "root", "", "finanzen");
 			echo("</TR>");
 		}			
 		echo("</TABLE>");
-		echo $kategorieanzahl;
-		//echo $kategorieanzahl;
+		echo("</TD></TR>");
+		echo("</TABLE>");
 echo("<html>
   <head>
     <script type=\"text/javascript\" src=\"https://www.google.com/jsapi\"></script>
@@ -357,7 +344,7 @@ echo("<html>
 </html> ");
 
 ?>
-
+</div>
 
  <div id="footer">
     <p>Panda 2015</p>

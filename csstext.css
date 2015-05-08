@@ -1,21 +1,22 @@
 html,body{margin:0;padding:0}
-body{font: 76% arial,sans-serif;text-align:center}
+body{ background-image:url("260615-white-gradient-background.jpg");font: 76% arial,sans-serif;text-align:center}
 p{margin:0 10px 10px}
+
 a{padding:5px; text-decoration:none; color:#000000;}
 div#fejléc{background-image: url("header background.jpg");}
 div#fejléc h1{color: #ffffff;height:80px;line-height:80px;margin:0;padding-left:10px;}
 div#keret{text-align:left}
 div#content p{line-height:1.4}
-div#menu{background:#00B2FF;}
+div#menu{color:#ffffff; background-image: url("menu background.jpg");height:100%; }
 div#menu ul{margin:15px 0; padding:0; list-style-type:none;}
-div#menu li{margin-bottom:5px;}
+div#menu li{ margin-bottom:5px;}
 
-div#footer{background:#0080FF;}
+div#footer{background-image: url("header background.jpg");}
 div#footer p{margin:0;padding:5px 10px}
-div#keret{width:900px;margin:0 auto}
+div#keret{width:1200px;margin:0 auto}
 div#wrapper{float:left;width:100%}
 div#content{margin: 0 150px}
-div#menu{float:left;width:150px;margin-left:-900px}
-div#login{float:left;padding:5px 10px}
-
+div#menu{float:left;width:150px;margin-left:-1200px}
+div#login{ float:left;padding:5px 10px}
 div#footer{clear:left;width:100%}
+div#table{float:left}
