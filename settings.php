@@ -33,7 +33,7 @@
 <?php
 		
 		 include'menu.php';
-		echo "Hi: ".$_SESSION['myusername']."</br>";
+		
 	//Add kategorie
 		if( isset( $_POST[ 'KategorieName' ] ) ) {
 			$KategorieName= $_POST['KategorieName'];
@@ -111,7 +111,7 @@ echo("<TR><TD>");
 				while ($row = $result->fetch_row() ) {
 					if($i % 2 == 1)
 					{
-					$bgcolor ="red";
+					$bgcolor ="#659BEC";
 					$fontcolor ="yellow";
 					}
 					else
@@ -144,7 +144,7 @@ echo("<TD>");
 				while ($row = $result->fetch_row() ) {
 					if($i % 2 == 1)
 					{
-					$bgcolor ="red";
+					$bgcolor ="#659BEC";
 					$fontcolor ="yellow";
 					}
 					else

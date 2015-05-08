@@ -32,7 +32,7 @@ session_start();
 	
  <?php 
 	include'menu.php';
-	echo "Hi: ".$_SESSION['myusername']."</br>";
+	
 	
  ?>
 

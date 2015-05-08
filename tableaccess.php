@@ -24,15 +24,15 @@ if ($_SERVER["HTTPS"] != "on")
 	</div>
  <div id="wrapper">
     <div id="content">
-      <p><strong>YESSS</strong></p>
-      <p>ide kéne</p>
+      <p><strong>Alle Transaktionen</strong></p>
+      <!--<p>ide kéne</p>-->
     </div>
   </div>
  
 		
  <?php 
 	include'menu.php';
-	echo "Hi: ".$_SESSION['myusername']."</br>";
+	
  ?>
  <div id="gomb">
  <form action="tableaccess.php" method="get">
@@ -92,7 +92,7 @@ if ($_SERVER["HTTPS"] != "on")
 		while ($row = $result->fetch_row() ) {
 			if($k % 2 == 1)
 			{
-				$bgcolor ="red";
+				$bgcolor ="659BEC";
 				$fontcolor ="yellow";
 			}
 			else
@@ -179,13 +179,6 @@ $mysqli = new mysqli("localhost","root","","finanzen");
 		?>
 		
 		
-
-
-
-
-
-
-
 <div id="footer">
     <p>Panda 2015</p>
   </div>

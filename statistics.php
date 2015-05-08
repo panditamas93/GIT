@@ -31,14 +31,14 @@
 	
 	<div id="wrapper">
     <div id="content">
-      <p><strong>Choose what you want to do</strong></p>
+      <p><strong>Hier kann man die Kategorien bearbeiten</strong></p>
       
     </div>
   </div>
 	
  <?php 
 	include'menu.php';
-	echo "Hi: ".$_SESSION['myusername']."</br>";
+	
 	
  ?>
 <div id="table">
@@ -62,16 +62,7 @@ $mysqli = new mysqli("localhost", "root", "", "finanzen");
 			$stat = array();
 			
 			while ($row = $result->fetch_row() ) {
-			if($k % 2 == 1)
-			{
-				$bgcolor ="red";
-				$fontcolor ="yellow";
-			}
-			else
-			{
-				$bgcolor ="lightblue";
-				$fontcolor ="red";
-			}
+			
 			$stat[]= $row;
 			
 			/*printf("<TR bgcolor='%s' font color='%s'><TD>%s </TD><TD>%s</TD><TD>%s</TD></TR></br>", 
@@ -82,7 +73,17 @@ $mysqli = new mysqli("localhost", "root", "", "finanzen");
 			echo("<TR><TD>");
 			echo("<TABLE><TR><TH>Monat</TH><TH>Kategorie</TH><TH>Anzahl</TH></TR>");
 			for($i=0; $i<$k; $i++){
-			echo("<TR>");
+				if($i % 2 == 1)
+			{
+				$bgcolor ="#659BEC";
+				$fontcolor ="yellow";
+			}
+			else
+			{
+				$bgcolor ="lightblue";
+				$fontcolor ="light";
+			}
+			echo("<TR bgcolor='$bgcolor'>");
 			echo("<TD>");
 			echo $stat[$i][0];
 			echo("</TD>");
@@ -120,7 +121,17 @@ $mysqli = new mysqli("localhost", "root", "", "finanzen");
 		echo("<TABLE>");
 		echo("<TR><TH>Kategorien</TH></TR>");
 		for($z=0; $z<$kategorieanzahl; $z++){
-			echo("<TR>");
+			if($z % 2 == 1)
+			{
+				$bgcolor ="#659BEC";
+				$fontcolor ="yellow";
+			}
+			else
+			{
+				$bgcolor ="lightblue";
+				$fontcolor ="light";
+			}
+			echo("<TR bgcolor='$bgcolor'>");
 			echo("<TD>");
 			echo $tempa[$z];
 			echo("</TD>");

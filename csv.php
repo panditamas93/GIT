@@ -27,7 +27,7 @@
 	
 	<div id="wrapper">
     <div id="content">
-      <p><strong>Give me csv</strong></p>
+      <p><strong>Bitte CSV Datei eingeben</strong></p>
       <p><div id="insert">
 <form method="post" accept-charset="utf-8">
 Field:</br> <textarea rows="15" cols="75" name="CSV"></textarea>
@@ -39,7 +39,7 @@ Field:</br> <textarea rows="15" cols="75" name="CSV"></textarea>
 	
  <?php 
 	include'menu.php';
-	echo "Hi: ".$_SESSION['myusername']."</br>";
+	
 	
  ?>
 

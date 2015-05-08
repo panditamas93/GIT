@@ -1,8 +1,11 @@
 <?php 
+
 	if ($_SERVER["HTTPS"] != "on")
 {
 			header('Location: https://localhost/addtrans.php');
 	}
+
+
 	session_start();
 	if(!isset($_SESSION['myusername'])){
 	header("location:login.php");
@@ -17,14 +20,16 @@
 <link rel="stylesheet" type="text/css" href="csstext.css" />
 </head>
  <body>	
+ 
  <div id="keret">
+ 
 	<div id="fejléc">
-	<h1>ADD TRANSAKTION</h1>
+	<h1>Add transaktion</h1>
 	</div>
 	<div id="wrapper">
     <div id="content">
-      <p><strong>Neue Transaktion eingeben</strong></p>
-      <p></p>
+      <p><strong>YESSS</strong></p>
+      <p>ide kéne</p>
     </div>
   </div>
 	
@@ -34,8 +39,9 @@
 	
  ?>
 	
+  
  <?php 
- $kaki=1;
+$kaki=1;
 		if( isset( $_POST[ 'TransaktionsDatum' ])/*&& isset( $_POST[ 'BenutzerName' ]  ) &&
 			isset( $_POST[ 'KontoNummer' ])       && isset( $_POST[ 'TransaktionsSumme' ])*/  ){
 				
@@ -61,8 +67,7 @@
 				$DevisenTyp = $_POST[ 'DevisenTyp' ];
 				
 				$mysqli = new mysqli("localhost","root","","finanzen");
-				if($mysqli->connect_errno)
-				{
+				if($mysqli->connect_errno)				{
 					echo "MySQL Fehler: " . $mysqli->connect_error . "<BR/>";
 				}
 				
@@ -87,7 +92,7 @@ VALUES ('$KategorieName', '$TransaktionsDatum', '$BenutzerName','$BenutzerKonto'
  ?>
  <div id="login">
 	  <form method="POST"> 
-            KategorieName: <input type="text" name="KategorieName" /> <br /> 
+           KategorieName: <input type="text" name="KategorieName" /> <br /> 
             TransaktionsDatum:     <input type="text" name="TransaktionsDatum" /> <br /> 
 			BenutzerName:     <input type="text" name="BenutzerName" /> <br /> 
 			BenutzerKonto:     <input type="text" name="BenutzerKonto" /> <br /> 
@@ -106,12 +111,8 @@ VALUES ('$KategorieName', '$TransaktionsDatum', '$BenutzerName','$BenutzerKonto'
 			KontoStand:     <input type="text" name="KontoStand" /> <br /> 
 			DevisenTyp:     <input type="text" name="DevisenTyp" /> <br /> 
 			<input type="submit"/> 
-        </form>
+       </form>
 		</div>
- <div id="footer">
-    <p>Panda 2015</p>
-  </div>
- 
- </div>
-</body>
- </html>
+  <div id="footer">
+     <p>Panda 2015</p>
+   </div>
