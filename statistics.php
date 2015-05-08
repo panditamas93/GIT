@@ -31,7 +31,7 @@
 	
 	<div id="wrapper">
     <div id="content">
-      <p><strong>Hier kann man die Kategorien bearbeiten</strong></p>
+      <p><strong>Monatliche Statistiken</strong></p>
       
     </div>
   </div>
